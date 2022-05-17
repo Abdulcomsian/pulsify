@@ -1,0 +1,454 @@
+:root {
+    --commonColor: #1678F2;
+    --whiteColor: #fff;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+a,
+span {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Sora', sans-serif;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border: none;
+}
+
+body {
+    background-color: #f1f9fd;
+    font-family: 'Sora', sans-serif;
+}
+
+input,
+select {
+    border: 1px solid #C4C4C4;
+    border-radius: 6px;
+}
+
+.commonTitle {
+    font-size: 30px;
+    font-weight: 700;
+}
+.container-fluid{
+    padding: 0px 50px;
+}
+
+/********* Header - CSS ****************/
+header{
+    padding: 0px 50px;
+}
+header .navbar-nav {
+    margin-left: 57px;
+}
+
+header .navbar-nav li {
+    margin-right: 40px;
+}
+
+header .navbar-nav li a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6C87AE !important;
+
+}
+
+header .navbar-nav li.active a {
+    color: #3A8EF6 !important;
+}
+
+header .authBtnDiv {
+    display: flex;
+    align-items: center;
+}
+
+header .authBtnDiv a {
+    display: block;
+    padding: 10px 25px;
+    margin-left: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 4px;
+}
+
+header .authBtnDiv a.login__Register-Btn {
+    color: var(--commonColor) !important;
+    border: 1px solid var(--commonColor);
+}
+
+header .authBtnDiv a.apply__Doctor-Btn {
+    background-color: var(--commonColor);
+    color: var(--whiteColor);
+}
+
+/****************** Main - Banner - CSS **********/
+.mainHeroSection {
+    position: relative;
+}
+
+.mainHeroSection .searchDiv {
+    width: 100%;
+    max-width: 83%;
+    margin-left: 35px;
+    position: absolute;
+    bottom: -60px;
+}
+
+.mainHeroSection .bannerLeftDiv {
+    padding: 200px 30px;
+}
+
+.mainHeroSection .bannerLeftDiv h5 {
+    color: var(--commonColor);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    margin-bottom: 20px;
+}
+
+.mainHeroSection .bannerLeftDiv h1 {
+    font-size: 58px;
+    color: #252B42;
+    font-weight: 700;
+    line-height: 65px;
+    letter-spacing: 0.2px;
+    margin-bottom: 20px;
+}
+
+.mainHeroSection .bannerLeftDiv h4 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.2px;
+    color: #737373;
+}
+
+.mainHeroSection .bannerRightDiv {
+    padding: 60px 0px;
+}
+
+.tabDiv .findDoctorBox {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 30px;
+    background: var(--whiteColor);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+.tabDiv .findDoctorBox .inputDiv {
+    width: 20%;
+    text-align: center;
+}
+
+.tabDiv .findDoctorBox .inputDiv input,
+.tabDiv .findDoctorBox .inputDiv select {
+    padding: 10px 10px;
+    width: 90%;
+    color: #7D7D7D;
+    font-weight: 300;
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+}
+
+.tabDiv .findDoctorBox .inputDiv button {
+    background: var(--commonColor);
+    padding: 7px 44px;
+    color: var(--whiteColor);
+    border: none;
+    border-radius: 6px;
+}
+
+.pillsDiv .nav-pills li a {
+    display: block;
+    padding: 10px 55px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 10px 10px 0px 0px;
+    background: #F1F9FD;
+    border: 1px solid #C4C4C4;
+    color: #000000;
+}
+
+.pillsDiv .nav-pills li a img {
+    margin-right: 8px;
+}
+
+.pillsDiv .nav-pills li a.active {
+    background-color: var(--commonColor);
+    color: var(--whiteColor);
+    border-color: var(--commonColor);
+}
+
+/************* Top - Specialities - CSS **********/
+.topSpecialities {
+    padding: 120px 30px;
+    background: var(--whiteColor);
+}
+
+.topSpecialities .multiSpecialities {
+    margin-top: 70px !important;
+    display: flex;
+    width: 100%;
+    max-width: 90%;
+    margin: auto;
+}
+
+.topSpecialities .multiSpecialities .commonBox {
+    width: 20%;
+    text-align: center;
+}
+
+.topSpecialities .multiSpecialities .commonBox .imgBox {
+    width: 117px;
+    height: 117px;
+    background: var(--whiteColor);
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.topSpecialities .multiSpecialities .commonBox p {
+    font-size: 20px;
+    color: #000000;
+    margin-top: 35px;
+    font-weight: 400;
+}
+
+/***************** Top - Reated - Doctor - CSS ******/
+.topReatedDoctor {
+    padding: 80px 0px;
+    background: #F9FBFC;
+}
+
+.topReatedDoctor .mainContentHeader h2 {
+    font-size: 16px;
+    color: #65677B;
+    margin: 20px 0px;
+}
+
+.topReatedDoctor .mainContentHeader p {
+    color: #5B67CA;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.topReatedDoctor .multiDoctorDiv {
+    margin-top: 90px !important;
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
+    border-radius: 6px;
+    text-align: center;
+    padding: 70px 40px 20px;
+    border-bottom: 3px solid var(--commonColor);
+    margin-bottom: 80px;
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard img {
+    position: absolute;
+    top: -40px;
+    left: 40%;
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard .doctorSpecialities {
+    margin: 25px 0px;
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard .cardBody p {
+    color: #12175E;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard .cardBody span {
+    background: rgba(101, 168, 251, 0.2);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard .cardBody .doctorSpecialities p {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.4);
+    margin: 0px;
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard .cardBody .doctorSpecialities p.rating {
+    color: #FFB800;
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard .cardBody .doctorSpecialities p span {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 16px;
+    background: transparent;
+}
+
+.topReatedDoctor .multiDoctorDiv .doctorCard .cardBody .doctorDetail p {
+    font-size: 16px;
+    color: #65677B;
+    font-weight: 400;
+}
+
+/********** Award - Div - CSS ************/
+.awardDiv {
+    background-color: var(--commonColor);
+
+}
+
+.awardDiv .multiAward {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+    padding: 54px 0px;
+}
+
+.awardDiv .multiAward .awardBox {
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+
+.awardDiv .multiAward .awardBox img {
+    margin-right: 34px;
+}
+
+.awardDiv .multiAward .awardBox h5 {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--whiteColor);
+}
+
+.awardDiv .multiAward .awardBox p {
+    font-weight: 500;
+    color: var(--whiteColor);
+    font-size: 16px;
+}
+
+/********** Medical - Expert - CSS **********/
+.medicalExpert {
+    padding: 90px 0px 50px;
+    background-color: var(--whiteColor);
+}
+
+.medicalExpert .medicalRightDiv {
+    padding: 70px 50px;
+}
+
+.medicalExpert .medicalRightDiv h3 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+}
+
+.medicalExpert .medicalRightDiv p {
+    margin: 16px 0px 32px;
+    font-size: 16px;
+    color: #6C87AE;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.medicalExpert .medicalRightDiv a {
+    padding: 16px 28px;
+    background: var(--commonColor);
+    border-radius: 8px;
+    color: var(--whiteColor);
+}
+.medicalExpert .imgDiv{
+    position: relative;
+}
+.medicalExpert .imgDiv .qualityOurQuantity{
+    position: absolute;
+    bottom: 24%;
+    right: -30px;
+    background: var(--whiteColor);
+    background: var(--whiteColor);
+    box-shadow: 0px 12px 32px rgb(63 128 240 / 8%);
+    border-radius: 8px;
+    display: flex;
+    padding: 2px 16px;
+    align-items: center;
+}
+.medicalExpert .imgDiv .qualityOurQuantity .textDiv p{
+    font-size: 16px;
+    font-weight: 400;
+}
+.medicalExpert .imgDiv .qualityOurQuantity .textDiv{
+    text-align: left;
+}
+.medicalExpert .imgDiv .qualityOurQuantity .textDiv i{
+    color: #FFC107;
+}
+
+
+
+
+/*********** Media - Query - CSS **************/
+@media screen and (max-width: 1250px) {
+    header .navbar-nav li {
+        margin-right: 25px;
+    }
+
+    header .navbar-nav li a,
+    header .authBtnDiv a {
+        font-size: 14px;
+    }
+
+    header .authBtnDiv a {
+        padding: 10px 20px;
+    }
+
+    header .navbar-nav {
+        margin-left: 30px;
+    }
+
+    header .authBtnDiv a {
+        margin-left: 15px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    header .authBtnDiv {
+        display: block;
+    }
+
+    header .navbar-nav,
+    header .navbar-nav li {
+        margin: 0px;
+    }
+
+    header .authBtnDiv a {
+        margin: 10px 0px;
+        text-align: center;
+    }
+}
