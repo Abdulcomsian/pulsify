@@ -14,12 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-   toastr()->success('Data has been saved successfully!');
     return view('frontend.home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+
+
+//Admin Routes here
+
+Route::group(['prefix'=>'admin'], function(){
+  Route::get('dashboard',function(){
+    return view('backend.dashboard');
+    });
+  Route::get('doctors',function(){
+    return view('backend.index');
+    });
+});
+
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
