@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\SpecialtyController;
+use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Admin\HospitalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,22 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+
+  Route::get('/', [HomeController::class, 'home'])->name('home');
+
 
 
 
 
 //Admin Routes here
 
-Route::group(['prefix'=>'admin'], function(){
-  Route::get('dashboard',function(){
+Route::group(['middleware' => ['auth', 'admin'],'prefix' => 'admin'], function () {
+  Route::get('dashboard', function () {
     return view('backend.dashboard');
-    });
-  Route::get('doctors',function(){
-    return view('backend.index');
-    });
+  });
+
+  Route::resources([
+    'doctors' => DoctorController::class,
+    'spiciality' => SpecialtyController::class, //Specialty
+    'hospitals' => HospitalController::class, //hospitals
+  ]);
 });
 
 
@@ -37,4 +43,4 @@ Route::group(['prefix'=>'admin'], function(){
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
