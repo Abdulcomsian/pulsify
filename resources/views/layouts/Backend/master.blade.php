@@ -32,7 +32,7 @@ License: For each use you must have a valid license purchased only from above li
     <link href="{{asset('backend/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('backend/assets/css/style.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
-
+     @toastr_css
     {{-- Page Specific Styles        --}}
     @yield('css')
 
@@ -92,6 +92,8 @@ License: For each use you must have a valid license purchased only from above li
 <script src="{{asset('backend/assets/js/custom/modals/create-app.js')}}"></script>
 <script src="{{asset('backend/assets/js/custom/modals/upgrade-plan.js')}}"></script>
 <!--end::Page Custom Javascript-->
+@toastr_js
+@toastr_render
 @yield('script')
 <!--end::Javascript-->
 </body>

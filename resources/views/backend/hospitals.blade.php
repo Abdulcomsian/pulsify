@@ -28,7 +28,7 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Doctors" />
+                            <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Hospitals" />
                         </div>
                         <!--end::Search-->
                     </div>
@@ -45,7 +45,7 @@
                                         <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
                                     </svg>
                                 </span>
-                                <!--end::Svg Icon-->Add Doctor
+                                <!--end::Svg Icon-->Add Hospital
                             </button>
                             <!--end::Add user-->
                         </div>
@@ -67,7 +67,7 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header" id="kt_modal_add_user_header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bolder">Add Doctor</h2>
+                                        <h2 class="fw-bolder">Add Hospital</h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" data-kt-users-modal-action="close">
@@ -87,32 +87,15 @@
                                     <!--begin::Modal body-->
                                     <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                         <!--begin::Form-->
-                                        <form id="kt_modal_add_user_form" class="form" method="post" action="{{route('doctors.store')}}" enctype="multipart/form-data">
+                                        <form id="kt_modal_add_user_form" class="form" method="post" action="{{route('hospitals.store')}}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Doctor Name</label>
+                                                    <label class="required fw-bold fs-6 mb-2">Hospital Name</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="text" name="full_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" required />
-                                                    <!--end::Input-->
-                                                </div>
-
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Email</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" required />
-                                                    <!--end::Input-->
-                                                </div>
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Title</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <input type="text" name="title" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Title"  required/>
+                                                    <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" required />
                                                     <!--end::Input-->
                                                 </div>
 
@@ -146,20 +129,7 @@
                                                     <input type="text" name="address" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Full Address" required />
                                                     <!--end::Input-->
                                                 </div>
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Speciality</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <select class="form-control form-control-solid mb-3 mb-lg-0" name="specialtie_id">
-                                                        <option value="">Select Specialty</option>
-                                                        @foreach($Specialty as $sp)
-                                                        <option value="{{$sp->id}}">{{$sp->name}}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                    <!--end::Input-->
-                                                </div>
+                                                
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
                                                     <label class="required fw-bold fs-6 mb-2">Description</label>
@@ -201,6 +171,122 @@
                             <!--end::Modal dialog-->
                         </div>
                         <!--end::Modal - Add task-->
+
+                        <!-- edit modal -->
+                        <!--begin::Modal - Add Doctor-->
+                        <div class="modal fade" id="kt_modal_edit_hospital" tabindex="-1" aria-hidden="true">
+                            <!--begin::Modal dialog-->
+                            <div class="modal-dialog modal-dialog-centered mw-650px">
+                                <!--begin::Modal content-->
+                                <div class="modal-content">
+                                    <!--begin::Modal header-->
+                                    <div class="modal-header" id="kt_modal_add_user_header">
+                                        <!--begin::Modal title-->
+                                        <h2 class="fw-bolder">Edit Hospital</h2>
+                                        <!--end::Modal title-->
+                                        <!--begin::Close-->
+                                        <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" data-kt-users-modal-action="close">
+                                            <span class="svg-icon svg-icon-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                        <rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </div>
+                                        <!--end::Close-->
+                                    </div>
+                                    <!--end::Modal header-->
+                                    <!--begin::Modal body-->
+                                    <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                        <!--begin::Form-->
+                                        <form id="kt_modal_edit_hospital_form" class="form" method="post" action="" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('put')
+                                            <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Hospital Name</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="name" id="editname" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" required />
+                                                    <!--end::Input-->
+                                                </div>
+
+                                                <!--begin::Input group-->
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Country</label>
+                                                    <select name="country_id" id="editcountry" class="form-control form-control-solid mb-3 mb-lg-0" required>
+                                                        <option value="">Select Country</option>
+                                                        @foreach($countries as $contry)
+                                                        <option value="{{$contry->id}}">{{$contry->country_name}}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">City</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="city" id="editcity" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter City" required />
+                                                    <!--end::Input-->
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Full Address</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="address" id="eidtaddress" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Full Address" required />
+                                                    <!--end::Input-->
+                                                </div>
+                                                
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <textarea name="description" id="editdescription" class="form-control form-control-solid mb-3 mb-lg-0" rows="3" required></textarea>
+
+                                                    <!--end::Input-->
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="fw-bold fs-6 mb-2">Image</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="file" name="image" class="form-control form-control-solid mb-3 mb-lg-0" accept="image/*" />
+                                                    <!--end::Input-->
+                                                </div>
+
+                                                <!--end::Input group-->
+                                            </div>
+                                            <!--end::Scroll-->
+                                            <!--begin::Actions-->
+                                            <div class="text-center pt-15">
+                                                <button type="reset" class="btn btn-white me-3" data-kt-users-modal-action="cancel">Discard</button>
+                                                <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+                                                    <span class="indicator-label">Update</span>
+                                                    <span class="indicator-progress">Please wait...
+                                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                </button>
+                                            </div>
+                                            <!--end::Actions-->
+                                        </form>
+                                        <!--end::Form-->
+                                    </div>
+                                    <!--end::Modal body-->
+                                </div>
+                                <!--end::Modal content-->
+                            </div>
+                            <!--end::Modal dialog-->
+                        </div>
+                        <!--end::Modal - Add task-->
                     </div>
                     <!--end::Card toolbar-->
                 </div>
@@ -222,13 +308,10 @@
                         <thead>
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-
-                                <th class="min-w-100px">Doctor Name</th>
-                                <th class="min-w-100px">Email</th>
+                                <th class="min-w-100px">Hospital Name</th>
                                 <th class="min-w-100px">Country</th>
                                 <th class="min-w-100px">City</th>
-                                <th class="min-w-100px">Address</th>
-                                <th class="min-w-100px">Speciality</th>
+                                <th class="min-w-100px">Location</th>
                                 <th class="min-w-100px">Image</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
@@ -238,18 +321,16 @@
                         <!--begin::Table body-->
                         <tbody class="text-gray-600 fw-bold">
                             <!--begin::Table row-->
-                            @foreach($doctors as $doc)
+                            @foreach($hospitals as $hospital)
                             <tr>
-                                <td>{{$doc->full_name}}</td>
-                                <td>{{$doc->email}}</td>
-                                <td>{{$doc->country->country_name}}</td>
-                                <td>{{$doc->city}}</td>
-                                <td>{{$doc->address}}</td>
-                                <td>{{$doc->sepcial->name}}</td>
-                                <td><img src="{{asset($doc->image)}}" width="60px" height="60px" /></td>
+                                <td>{{$hospital->name}}</td>
+                                <td>{{$hospital->country->country_name}}</td>
+                                <td>{{$hospital->city}}</td>
+                                <td>{{$hospital->address}}</td>
+                                <td><img src="{{asset($hospital->image)}}" width="60px" height="60px" /></td>
                                 <td class="text-end">
 
-                                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <a href="#" onclick="edithospital('{{json_encode($hospital)}}')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                         <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -259,11 +340,12 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </a>
-                                    <form style="width:20%;float:left" id="form_{{$doc->id}}" action="{{route('doctors.destroy',$doc)}}" method="POST">
+                                    <form style="width:20%;float:left" id="form_{{$hospital->id}}" action="{{route('hospitals.destroy',$hospital)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" id="{{$doc->id}}" class="confirm"><span class=" text-danger fa fa-trash"></span></button>
+                                        <button type="submit" id="{{$hospital->id}}" class="confirm"><span class=" text-danger fa fa-trash"></span></button>
                                     </form>
+                                    
                                 </td>
                             </tr>
                             @endforeach
@@ -284,4 +366,18 @@
 @endsection
 @section('script')
 @include('layouts.sweetalert.sweetalert_js')
+<script>
+    function edithospital($data) {
+        var data = JSON.parse($data);
+        console.log(data);
+        $("#kt_modal_edit_hospital_form").attr('action', 'hospitals/' + data.id);
+        $("#editid").val(data.id);
+        $("#editname").val(data.name);
+        $("#editcountry").val(data.country_id);
+        $("#editcity").val(data.city);
+        $("#eidtaddress").val(data.address);
+        $("#editdescription").val(data.description);
+        $("#kt_modal_edit_hospital").modal('show');
+    }
+</script>
 @endsection

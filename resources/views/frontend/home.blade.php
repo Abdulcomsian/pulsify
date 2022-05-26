@@ -41,12 +41,18 @@
                                         </div>
                                         <div class="inputDiv">
                                             <select name="" id="">
-                                                <option value="Location">Location</option>
+                                                <option value="">Location</option>
+                                                @foreach($countries as $country)
+                                                <option value="{{$country->id}}">{{$country->country_name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="inputDiv">
                                             <select name="" id="">
-                                                <option value="Speciality">Speciality</option>
+                                                <option value="">Speciality</option>
+                                                 @foreach($speciality as $spe)
+                                                 <option value="{{$spe->id}}">{{$spe->name}}</option>
+                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="inputDiv">
@@ -77,10 +83,20 @@
                         <h3 class="commonTitle">Find Doctor By Top Specialities</h3>
                     </div>
                 </div>
-                <div class="multiSpecialities">
+                <div class="multiSpecialities d-flex">
+                    @foreach($speciality as $spe)
                     <div class="commonBox">
                         <div class="imgBox">
-                            <img src="{{asset('img/primaryCare.png')}}" alt="" class="img-fluid">
+                            <img src="{{asset($spe->image)}}" alt="" class="img-fluid">
+                        </div>
+                        <p>{{$spe->name}}</p>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="multiSpecialities d-flex">
+                    <div class="commonBox">
+                        <div class="imgBox">
+                            <img src="http://127.0.0.1:8000/uploads/specialty/165355068782326.png" alt="" class="img-fluid">
                         </div>
                         <p>Primary Care</p>
                     </div>
@@ -124,23 +140,25 @@
                 </div>
                 <div class="multiDoctorDiv">
                     <div class="row">
+                        @foreach( $doctors as $doc)
                         <div class="col-lg-4">
                             <div class="doctorCard">
-                                <img src="{{asset('img/doctor1.png')}}" alt="" class="img-fluid">
+                                <img src="{{asset($doc->image)}}" alt="" class="img-fluid img-thumbnail w-25 rounded-circle" >
                                 <div class="cardBody">
-                                    <p>John Doe</p>
+                                    <p>{{$doc->full_name}}</p>
                                     <span>Highly recommended</span>
                                     <div class="doctorSpecialities">
-                                        <p>Orthopaedic Surgery</p>
-                                        <p>New York, NY</p>
+                                        <p>{{$doc->sepcial->name}}</p>
+                                        <p>{{$doc->country->country_name}}, {{$doc->city}}</p>
                                         <p class="rating"><i class="fa fa-star"></i>4.54<span>37 reviews</span></p>
                                     </div>
                                     <div class="doctorDetail">
-                                        <p>Very personable and good listener. Makes you feel comfortable and open immediately. Felt well taken care...</p>
+                                        <p>{{ \Illuminate\Support\Str::limit($doc->description, 120, '...') }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <div class="col-lg-4">
                             <div class="doctorCard">
                                 <img src="{{asset('img/doctor2.png')}}" alt="" class="img-fluid">
@@ -158,7 +176,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                         <!--<div class="col-lg-4">
                             <div class="doctorCard">
                                 <img src="{{asset('img/doctor3.png')}}" alt="" class="img-fluid">
                                 <div class="cardBody">
@@ -225,7 +243,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

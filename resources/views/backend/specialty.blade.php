@@ -28,7 +28,7 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Doctors" />
+                            <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Specialty" />
                         </div>
                         <!--end::Search-->
                     </div>
@@ -37,29 +37,25 @@
                     <div class="card-toolbar">
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-                                <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_specialty">
                                 <span class="svg-icon svg-icon-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1" />
                                         <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
                                     </svg>
                                 </span>
-                                <!--end::Svg Icon-->Add Doctor
+                                Add Specialty
                             </button>
-                            <!--end::Add user-->
                         </div>
-                        <!--end::Toolbar-->
-                        <!--begin::Group actions-->
                         <div class="d-flex justify-content-end align-items-center d-none" data-kt-user-table-toolbar="selected">
                             <div class="fw-bolder me-5">
                                 <span class="me-2" data-kt-user-table-select="selected_count"></span>Selected
                             </div>
                             <button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete Selected</button>
                         </div>
-                        
-                        <!--begin::Modal - Add Doctor-->
-                        <div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">
+
+                        <!-- Add modal -->
+                        <div class="modal fade" id="kt_modal_add_specialty" tabindex="-1" aria-hidden="true">
                             <!--begin::Modal dialog-->
                             <div class="modal-dialog modal-dialog-centered mw-650px">
                                 <!--begin::Modal content-->
@@ -67,7 +63,7 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header" id="kt_modal_add_user_header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bolder">Add Doctor</h2>
+                                        <h2 class="fw-bolder">Add Specialty</h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" data-kt-users-modal-action="close">
@@ -87,86 +83,25 @@
                                     <!--begin::Modal body-->
                                     <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                         <!--begin::Form-->
-                                        <form id="kt_modal_add_user_form" class="form" method="post" action="{{route('doctors.store')}}" enctype="multipart/form-data">
+                                        <form id="kt_modal_add_user_form" method="post" class="form" action="{{route('spiciality.store')}}" enctype="multipart/form-data">
                                             @csrf
+                                            <!--begin::Scroll-->
                                             <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Doctor Name</label>
+                                                    <label class="required fw-bold fs-6 mb-2">Specialty Name</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="text" name="full_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" required />
+                                                    <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Specialty Name" value="" required />
                                                     <!--end::Input-->
                                                 </div>
 
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Email</label>
+                                                    <label class="required fw-bold fs-6 mb-2">Featured</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" required />
-                                                    <!--end::Input-->
-                                                </div>
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Title</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <input type="text" name="title" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Title"  required/>
-                                                    <!--end::Input-->
-                                                </div>
-
-                                                <!--begin::Input group-->
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Country</label>
-                                                    <select name="country_id" class="form-control form-control-solid mb-3 mb-lg-0" required>
-                                                        <option value="">Select Country</option>
-                                                        @foreach($countries as $contry)
-                                                        <option value="{{$contry->id}}">{{$contry->country_name}}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                </div>
-                                                <!--end::Input group-->
-                                                <!--begin::Input group-->
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">City</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <input type="text" name="city" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter City" required />
-                                                    <!--end::Input-->
-                                                </div>
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Full Address</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <input type="text" name="address" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Full Address" required />
-                                                    <!--end::Input-->
-                                                </div>
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Speciality</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <select class="form-control form-control-solid mb-3 mb-lg-0" name="specialtie_id">
-                                                        <option value="">Select Specialty</option>
-                                                        @foreach($Specialty as $sp)
-                                                        <option value="{{$sp->id}}">{{$sp->name}}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                    <!--end::Input-->
-                                                </div>
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">Description</label>
-                                                    <!--end::Label-->
-                                                    <!--begin::Input-->
-                                                    <textarea name="description" class="form-control form-control-solid mb-3 mb-lg-0" rows="3" required></textarea>
-
+                                                    <input type="checkbox" name="is_featured" class=" mb-3 mb-lg-0" required />
                                                     <!--end::Input-->
                                                 </div>
                                                 <div class="fv-row mb-7">
@@ -187,7 +122,9 @@
                                                 <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
                                                     <span class="indicator-label">Submit</span>
                                                     <span class="indicator-progress">Please wait...
-                                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                        <span class="spinner-border spinner-border-sm align-middle ms-2">
+                                                        </span>
+                                                    </span>
                                                 </button>
                                             </div>
                                             <!--end::Actions-->
@@ -201,6 +138,91 @@
                             <!--end::Modal dialog-->
                         </div>
                         <!--end::Modal - Add task-->
+                        <div class="modal fade" id="kt_modal_edit_specialty" tabindex="-1" aria-hidden="true">
+                            <!--begin::Modal dialog-->
+                            <div class="modal-dialog modal-dialog-centered mw-650px">
+                                <!--begin::Modal content-->
+                                <div class="modal-content">
+                                    <!--begin::Modal header-->
+                                    <div class="modal-header" id="kt_modal_add_user_header">
+                                        <!--begin::Modal title-->
+                                        <h2 class="fw-bolder">Edit Specialty</h2>
+                                        <!--end::Modal title-->
+                                        <!--begin::Close-->
+                                        <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" data-kt-users-modal-action="close">
+                                            <span class="svg-icon svg-icon-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                        <rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </div>
+                                        <!--end::Close-->
+                                    </div>
+                                    <!--end::Modal header-->
+                                    <!--begin::Modal body-->
+                                    <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                        <!--begin::Form-->
+                                        <form id="kt_modal_edit_specialty_form" method="post" class="form" action="" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('put')
+                                            <input type="hidden" name="id" id="editid" />
+                                            <!--begin::Scroll-->
+                                            <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Specialty Name</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="name" id="editname" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Specialty Name" value="" required />
+                                                    <!--end::Input-->
+                                                </div>
+
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Featured</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="checkbox" name="is_featured" id="editfeatured" class=" mb-3 mb-lg-0" required />
+                                                    <!--end::Input-->
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class=" fw-bold fs-6 mb-2">Image</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="file" name="image" class="form-control form-control-solid mb-3 mb-lg-0" accept="image/*" />
+                                                    <!--end::Input-->
+                                                </div>
+
+                                                <!--end::Input group-->
+                                            </div>
+                                            <!--end::Scroll-->
+                                            <!--begin::Actions-->
+                                            <div class="text-center pt-15">
+                                                <button type="reset" class="btn btn-white me-3" data-kt-users-modal-action="cancel">Discard</button>
+                                                <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+                                                    <span class="indicator-label">Update</span>
+                                                    <span class="indicator-progress">Please wait...
+                                                        <span class="spinner-border spinner-border-sm align-middle ms-2">
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <!--end::Actions-->
+                                        </form>
+                                        <!--end::Form-->
+                                    </div>
+                                    <!--end::Modal body-->
+                                </div>
+                                <!--end::Modal content-->
+                            </div>
+                            <!--end::Modal dialog-->
+                        </div>
+                        <!-- edit modal -->
                     </div>
                     <!--end::Card toolbar-->
                 </div>
@@ -208,29 +230,16 @@
                 <!--begin::Card body-->
                 <div class="card-body pt-0">
                     <!--begin::Table-->
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
                         <!--begin::Table head-->
                         <thead>
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-
-                                <th class="min-w-100px">Doctor Name</th>
-                                <th class="min-w-100px">Email</th>
-                                <th class="min-w-100px">Country</th>
-                                <th class="min-w-100px">City</th>
-                                <th class="min-w-100px">Address</th>
-                                <th class="min-w-100px">Speciality</th>
+                                <th class="min-w-100px">#No</th>
+                                <th class="min-w-100px">Specialty Name</th>
+                                <th class="min-w-100px">Is Featured</th>
                                 <th class="min-w-100px">Image</th>
-                                <th class="text-end min-w-100px">Actions</th>
+                                <th class="min-w-100px">Actions</th>
                             </tr>
                             <!--end::Table row-->
                         </thead>
@@ -238,18 +247,15 @@
                         <!--begin::Table body-->
                         <tbody class="text-gray-600 fw-bold">
                             <!--begin::Table row-->
-                            @foreach($doctors as $doc)
+                            @foreach($Specialty as $sp)
                             <tr>
-                                <td>{{$doc->full_name}}</td>
-                                <td>{{$doc->email}}</td>
-                                <td>{{$doc->country->country_name}}</td>
-                                <td>{{$doc->city}}</td>
-                                <td>{{$doc->address}}</td>
-                                <td>{{$doc->sepcial->name}}</td>
-                                <td><img src="{{asset($doc->image)}}" width="60px" height="60px" /></td>
-                                <td class="text-end">
 
-                                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$sp->name}}</td>
+                                <td>{{$sp->is_featured}}</td>
+                                <td><img src="{{asset($sp->image)}}" width="60px" height="60px" /></td>
+                                <td class="">
+                                    <a href="#" onclick="editspecialty('{{json_encode($sp)}}')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                         <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -259,12 +265,13 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </a>
-                                    <form style="width:20%;float:left" id="form_{{$doc->id}}" action="{{route('doctors.destroy',$doc)}}" method="POST">
+                                    <form style="width:20%;float:left" id="form_{{$sp->id}}" action="{{route('spiciality.destroy',$sp)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" id="{{$doc->id}}" class="confirm"><span class=" text-danger fa fa-trash"></span></button>
+                                        <button type="submit" id="{{$sp->id}}" class="confirm"><span class=" text-danger fa fa-trash"></span></button>
                                     </form>
                                 </td>
+
                             </tr>
                             @endforeach
                         </tbody>
@@ -284,4 +291,17 @@
 @endsection
 @section('script')
 @include('layouts.sweetalert.sweetalert_js')
+<script>
+    function editspecialty($data) {
+        var data = JSON.parse($data);
+        console.log(data);
+        $("#kt_modal_edit_specialty_form").attr('action', 'spiciality/' + data.id);
+        $("#editid").val(data.id);
+        $("#editname").val(data.name);
+        if (data.is_featured == '1') {
+            $("#editfeatured").prop('checked', true);
+        }
+        $("#kt_modal_edit_specialty").modal('show');
+    }
+</script>
 @endsection
