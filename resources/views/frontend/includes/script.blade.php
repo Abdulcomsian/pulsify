@@ -8,6 +8,33 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
+<script src="{{asset('js/slick.min.js')}}"></script>
+<script>
+    $('.patientsSlider').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        dots: true,
+        responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+    });
+</script>
 @toastr_js
 @toastr_render
 </html>

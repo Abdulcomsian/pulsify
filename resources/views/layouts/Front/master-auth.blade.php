@@ -1,6 +1,6 @@
 @include('frontend.includes.head')
-<body>
-@include('frontend.includes.header')
+<body style="background-color: transparent;">
+@include('frontend.includes.auth-header')
    @yield('content')
 @include('frontend.includes.footer')
 </body>

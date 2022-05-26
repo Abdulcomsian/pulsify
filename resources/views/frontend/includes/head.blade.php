@@ -14,5 +14,8 @@
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap"
             rel="stylesheet">
+            <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+            <link rel="stylesheet" href="{{asset('css/slick-theme.css')}}">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet">
             @toastr_css
     </head>

@@ -311,6 +311,124 @@
                 </div>
             </div>
         </div>
+        <div class="patientFeedBack">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h3 class="commonTitle">Our Patients Feedback About Us</h3>
+                        <p>their impression after using our service</p>
+                    </div>
+                </div>
+                <div class="patientsSlider">
+                    <div class="patientsBox">
+                        <div class="quoteImg">
+                            <img src="{{asset('img/quote-right.png')}}" alt="" class="img-fluid">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.  tincidunt et scelerisque etiam. Blandit hendrerit id nec elementum ligula et.</p>
+                        <div class="profileDiv">
+                            <img src="{{asset('img/doctor1.png')}}" alt="" class="img-fluid">
+                            <div class="profileDetail">
+                                <h4>David Mark</h4>
+                                <span>Patient</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="patientsBox">
+                        <div class="quoteImg">
+                            <img src="{{asset('img/quote-right.png')}}" alt="" class="img-fluid">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.  tincidunt et scelerisque etiam. Blandit hendrerit id nec elementum ligula et.</p>
+                        <div class="profileDiv">
+                            <img src="{{asset('img/doctor1.png')}}" alt="" class="img-fluid">
+                            <div class="profileDetail">
+                                <h4>David Mark</h4>
+                                <span>Patient</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="patientsBox">
+                        <div class="quoteImg">
+                            <img src="{{asset('img/quote-right.png')}}" alt="" class="img-fluid">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.  tincidunt et scelerisque etiam. Blandit hendrerit id nec elementum ligula et.</p>
+                        <div class="profileDiv">
+                            <img src="{{asset('img/doctor1.png')}}" alt="" class="img-fluid">
+                            <div class="profileDetail">
+                                <h4>David Mark</h4>
+                                <span>Patient</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="patientsBox">
+                        <div class="quoteImg">
+                            <img src="{{asset('img/quote-right.png')}}" alt="" class="img-fluid">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.  tincidunt et scelerisque etiam. Blandit hendrerit id nec elementum ligula et.</p>
+                        <div class="profileDiv">
+                            <img src="{{asset('img/doctor1.png')}}" alt="" class="img-fluid">
+                            <div class="profileDetail">
+                                <h4>David Mark</h4>
+                                <span>Patient</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leatestNew">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h3 class="commonTitle">Latest News</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu tincidunt et scelerisque<br> etiam. Blandit hendrerit id nec elementum ligula et.</p>
+                    </div>
+                </div>
+                <div class="multiNews">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="newsDiv">
+                                <div class="imgDiv">
+                                    <img src="{{asset('img/news1.png')}}" alt="" class="img-fluid">
+                                </div>
+                                <div class="newsContent">
+                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i> January 1, 2022</span>
+                                    <h5>High Quality Treatment For Kids.</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
+                                    <a href="">Read more <span><i class="fa fa-angle-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="newsDiv">
+                                <div class="imgDiv">
+                                    <img src="{{asset('img/news2.png')}}" alt="" class="img-fluid">
+                                </div>
+                                <div class="newsContent">
+                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i> January 1, 2022</span>
+                                    <h5>High Quality Treatment For Kids.</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
+                                    <a href="">Read more <span><i class="fa fa-angle-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="newsDiv">
+                                <div class="imgDiv">
+                                    <img src="{{asset('img/news3.png')}}" alt="" class="img-fluid">
+                                </div>
+                                <div class="newsContent">
+                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i> January 1, 2022</span>
+                                    <h5>High Quality Treatment For Kids.</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
+                                    <a href="">Read more <span><i class="fa fa-angle-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+
     @endsection
 
