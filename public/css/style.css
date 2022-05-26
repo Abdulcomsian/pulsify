@@ -28,6 +28,7 @@ textarea:focus,
 select:focus {
     outline: none;
     border: none;
+    background-color: transparent;
 }
 
 body {
@@ -562,7 +563,125 @@ footer .footer-widgets ul li a{
     color: var(--whiteColor);
     opacity: 0.8;
 }
-
+/*********** Auth - Header - CSS ***************/
+.authHeader .navbar-collapse{
+    justify-content: flex-end;
+}
+.signUpDiv{
+    width: 100%;
+    max-width: 90%;
+    display: flex;
+    margin: 90px auto;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+.signUpDiv .leftDiv{
+    background-color: var(--commonColor);
+    width: 50%;
+    padding: 130px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signUpDiv .rightDiv{
+    width: 50%;
+    padding: 70px 45px;
+}
+.signUpDiv .rightDiv form{
+    margin-top: 40px;
+}
+.signUpDiv .rightDiv form .inputDiv{
+    margin-bottom: 20px;
+}
+.signUpDiv .rightDiv form .inputDiv input{
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgba(228, 228, 228, 0.9);
+    border-radius: 5px;
+    padding: 15px 20px;
+    color: rgba(45, 45, 45, 0.7);
+    font-size: 14px;
+    font-weight: 300;
+}
+.signUpDiv .rightDiv form .inputDiv label{
+    width: 100%;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+.signUpDiv .rightDiv form .forgotDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.signUpDiv .rightDiv form button{
+    width: 100%;
+    padding: 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin: 30px 0px;
+    background-color: var(--commonColor);
+    color: var(--whiteColor);
+}
+.signUpDiv .rightDiv form .multiBtn{
+    margin-top: 25px;
+}
+.signUpDiv .rightDiv form .multiBtn a{
+    border: 1px solid #C4C4C4;
+    border-radius: 4px;
+    padding: 15px 35px;
+    margin: 0px 11px;
+}
+.signUpDiv .rightDiv h4{
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+.signUpDiv .rightDiv p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #3A3737;
+    margin-bottom: 5px;
+}
+.signUpDiv .rightDiv form .keepMeSigned{
+    display: flex;
+    align-items: center;
+}
+.signUpDiv .rightDiv form .keepMeSigned input{
+    margin-right: 10px;
+}
+.signUpDiv .rightDiv form .keepMeSigned span{
+    font-size: 14px;
+    font-weight: 400;
+    color: #3A3737;
+}
+.signUpDiv .rightDiv form span a{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--commonColor)
+}
+.signUpDiv .rightDiv .socialDiv p{
+    font-size: 16px;
+}
+/*********** Contact - Us - CSS ***************/
+.contactBanner{
+    background-image: url(../img/banner.png);
+    width: 100%;
+    background-size: cover;
+    height: 250px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.contactBanner .backDrop{
+    background: linear-gradient(90deg, rgba(0, 82, 212, 0.4) 0%, rgba(67, 100, 247, 0.4) 50%, rgba(111, 177, 252, 0) 100%);
+    position: absolute;
+    z-index: 999999;
+    width: 100%;
+    height: 100%;
+}
 /*********** Media - Query - CSS **************/
 @media screen and (max-width: 1300px) {
     .awardDiv .multiAward .awardBox img {
@@ -671,6 +790,11 @@ footer .footer-widgets ul li a{
     .medicalExpert .imgDiv .qualityOurQuantity{
         right: 0px;
     }
+    .signUpDiv .rightDiv form span a,
+    .signUpDiv .rightDiv form .keepMeSigned span,
+    .signUpDiv .rightDiv p{
+        font-size: 12px;
+    }
     .medicalExpert .medicalRightDiv {
         text-align: center;
     }
@@ -719,6 +843,13 @@ footer .footer-widgets ul li a{
     }
 }
 @media screen and (max-width: 768px) {
+    .signUpDiv .leftDiv{
+        display: none;
+    }
+    .signUpDiv .rightDiv{
+        width: 100%;
+        padding: 70px 20px;
+    }
     .leatestNew .multiNews .newsDiv{
         max-width: 100%;
     }
@@ -757,8 +888,14 @@ footer .footer-widgets ul li a{
     .pillsDiv li{
         width: 100%;
     }
+    .signUpDiv .rightDiv form .inputDiv label{
+        font-size: 14px;
+    }
 }
 @media screen and (max-width: 580px) {
+    .signUpDiv{
+        margin: 50px 0px;
+    }
     .topReatedDoctor .multiDoctorDiv .doctorCard img {
         left: 36%;
     }

@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.home');
 });
+Route::get('/signin', function () {
+  return view('frontend.auth.login');
+});
+Route::get('/signup', function () {
+  return view('frontend.auth.register');
+});
+Route::get('/contact-us', function () {
+  return view('frontend.contact-us');
+});
 
 
 
