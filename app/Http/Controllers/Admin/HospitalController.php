@@ -99,7 +99,22 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $all_inputs  = $request->except('_token', 'image', '_method');
+            #uploading Image
+            if ($request->file('image')) {
+                $filePath = 'uploads/hospitals/';
+                $file = $request->file('image');
+                $imagename = HelperFunctions::saveFile(null, $file, $filePath);
+                $all_inputs['image'] = $imagename;
+            }
+            Hospital::find($id)->update($all_inputs);
+            toastSuccess('Hospital successfully updated!');
+            return Redirect::back();
+        } catch (\Exception $exception) {
+            toastError('Something went wrong, try again!');
+            return Redirect::back();
+        }
     }
 
     /**
@@ -110,6 +125,13 @@ class HospitalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Hospital::find($id)->delete();
+            toastSuccess('Hospital successfully Deleted!');
+            return back();
+        } catch (\Exception $exception) {
+            toastError('Something went wrong, try again!');
+            return Redirect::back();
+        }
     }
 }

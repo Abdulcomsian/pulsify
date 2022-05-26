@@ -171,6 +171,122 @@
                             <!--end::Modal dialog-->
                         </div>
                         <!--end::Modal - Add task-->
+
+                        <!-- edit modal -->
+                        <!--begin::Modal - Add Doctor-->
+                        <div class="modal fade" id="kt_modal_edit_hospital" tabindex="-1" aria-hidden="true">
+                            <!--begin::Modal dialog-->
+                            <div class="modal-dialog modal-dialog-centered mw-650px">
+                                <!--begin::Modal content-->
+                                <div class="modal-content">
+                                    <!--begin::Modal header-->
+                                    <div class="modal-header" id="kt_modal_add_user_header">
+                                        <!--begin::Modal title-->
+                                        <h2 class="fw-bolder">Edit Hospital</h2>
+                                        <!--end::Modal title-->
+                                        <!--begin::Close-->
+                                        <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" data-kt-users-modal-action="close">
+                                            <span class="svg-icon svg-icon-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                        <rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </div>
+                                        <!--end::Close-->
+                                    </div>
+                                    <!--end::Modal header-->
+                                    <!--begin::Modal body-->
+                                    <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                        <!--begin::Form-->
+                                        <form id="kt_modal_edit_hospital_form" class="form" method="post" action="" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('put')
+                                            <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Hospital Name</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="name" id="editname" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" required />
+                                                    <!--end::Input-->
+                                                </div>
+
+                                                <!--begin::Input group-->
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Country</label>
+                                                    <select name="country_id" id="editcountry" class="form-control form-control-solid mb-3 mb-lg-0" required>
+                                                        <option value="">Select Country</option>
+                                                        @foreach($countries as $contry)
+                                                        <option value="{{$contry->id}}">{{$contry->country_name}}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">City</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="city" id="editcity" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter City" required />
+                                                    <!--end::Input-->
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Full Address</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="address" id="eidtaddress" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Full Address" required />
+                                                    <!--end::Input-->
+                                                </div>
+                                                
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <textarea name="description" id="editdescription" class="form-control form-control-solid mb-3 mb-lg-0" rows="3" required></textarea>
+
+                                                    <!--end::Input-->
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="fw-bold fs-6 mb-2">Image</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="file" name="image" class="form-control form-control-solid mb-3 mb-lg-0" accept="image/*" />
+                                                    <!--end::Input-->
+                                                </div>
+
+                                                <!--end::Input group-->
+                                            </div>
+                                            <!--end::Scroll-->
+                                            <!--begin::Actions-->
+                                            <div class="text-center pt-15">
+                                                <button type="reset" class="btn btn-white me-3" data-kt-users-modal-action="cancel">Discard</button>
+                                                <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+                                                    <span class="indicator-label">Update</span>
+                                                    <span class="indicator-progress">Please wait...
+                                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                </button>
+                                            </div>
+                                            <!--end::Actions-->
+                                        </form>
+                                        <!--end::Form-->
+                                    </div>
+                                    <!--end::Modal body-->
+                                </div>
+                                <!--end::Modal content-->
+                            </div>
+                            <!--end::Modal dialog-->
+                        </div>
+                        <!--end::Modal - Add task-->
                     </div>
                     <!--end::Card toolbar-->
                 </div>
@@ -254,12 +370,13 @@
     function edithospital($data) {
         var data = JSON.parse($data);
         console.log(data);
-        $("#kt_modal_edit_specialty_form").attr('action', 'spiciality/' + data.id);
+        $("#kt_modal_edit_hospital_form").attr('action', 'hospitals/' + data.id);
         $("#editid").val(data.id);
         $("#editname").val(data.name);
-        if (data.is_featured == '1') {
-            $("#editfeatured").prop('checked', true);
-        }
+        $("#editcountry").val(data.country_id);
+        $("#editcity").val(data.city);
+        $("#eidtaddress").val(data.address);
+        $("#editdescription").val(data.description);
         $("#kt_modal_edit_hospital").modal('show');
     }
 </script>
