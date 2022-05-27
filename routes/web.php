@@ -18,12 +18,7 @@ use App\Http\Controllers\Admin\HospitalController;
 
 
 
-Route::get('/signin', function () {
-  return view('frontend.auth.login');
-});
-Route::get('/signup', function () {
-  return view('frontend.auth.register');
-});
+
 Route::get('/contact-us', function () {
   return view('frontend.contact-us');
 });

@@ -10,22 +10,24 @@
                 <h4 class="text-center">Sign Up</h4>
                 <p class="text-center">Enter your email and password for signing in. </p>
                 <p class="text-center">Already have an account? <a href="/signin">Sign In</a></p>
-                <form action="">
+                <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                <form action="{{ route('register') }}" method="post">
+                    @csrf
                     <div class="inputDiv">
-                        <label for="">Name</label>
-                        <input type="text" placeholder="Enter Your Name">
+                        <x-label for="name" :value="__('Name')" />
+                        <input type="text" placeholder="Enter Your Name" type="text" name="name" value="{{old('name')}}" required autofocus>
                     </div>
                     <div class="inputDiv">
-                        <label for="">Email</label>
-                        <input type="text" placeholder="Enter Your Email">
+                        <x-label for="email" :value="__('Email')" />
+                        <input type="email" placeholder="Enter Your Email"  name="email" value="{{old('email')}}" required>
                     </div>
                     <div class="inputDiv">
-                        <label for="">Password</label>
-                        <input type="password" placeholder="********">
+                        <x-label for="password" :value="__('Password')" />
+                        <input type="password" placeholder="********" name="password" required autocomplete="new-password">
                     </div>
                     <div class="inputDiv">
                         <label for="">Confirm Password</label>
-                        <input type="password" placeholder="********">
+                        <input type="password" placeholder="********" name="password_confirmation" required>
                     </div>
                     <button>Sign Up</button>
                     <div class="socialDiv">
