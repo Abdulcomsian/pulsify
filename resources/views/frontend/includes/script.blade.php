@@ -13,7 +13,7 @@
     $('.patientsSlider').slick({
         infinite: true,
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         dots: true,
         responsive: [
     {
@@ -34,6 +34,45 @@
     }
   ]
     });
+</script>
+<script>
+    $('.top-reveiw-slider').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: true,
+        responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+    });
+    $(".pills-div li").click(function(){
+      $(".pills-div li").removeClass("active");
+      $(this).addClass("active")
+      $('.top-reveiw-slider').slick('refresh');
+    })
+    $(".apply__Doctor-Btn").mouseenter(function() {
+      $(this).text("Comming Soon");
+      $(this).addClass("hoverDoctor");
+    }).mouseleave(function() {
+      $(this).text("Apply as Doctor");
+      $(this).removeClass("hoverDoctor");
+    });
+    
 </script>
 @toastr_js
 @toastr_render

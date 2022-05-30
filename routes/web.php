@@ -25,6 +25,12 @@ Route::get('/contact-us', function () {
 Route::get('/search', function () {
   return view('frontend.doctor.search-result');
 });
+Route::get('/doctor-feedback', function () {
+  return view('frontend.doctor.doctor-feed-back');
+});
+Route::get('/hospital-feedback', function () {
+  return view('frontend.doctor.hospital-feed-back');
+});
 
 
   Route::get('/', [HomeController::class, 'home'])->name('home');
