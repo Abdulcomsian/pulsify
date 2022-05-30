@@ -27,6 +27,9 @@ Route::get('/signup', function () {
 Route::get('/contact-us', function () {
   return view('frontend.contact-us');
 });
+Route::get('/search', function () {
+  return view('frontend.doctor.search-result');
+});
 
 
   Route::get('/', [HomeController::class, 'home'])->name('home');

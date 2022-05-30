@@ -1,8 +1,17 @@
 :root {
     --commonColor: #1678F2;
     --whiteColor: #fff;
+    --grayColor: #717F8E;
+    --ratingColor: #FFB800;
 }
-
+.commonButton{
+    background: #1678F2;
+    border-radius: 4px;
+    padding: 15px 18px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+}
 p,
 h1,
 h2,
@@ -32,7 +41,6 @@ select:focus {
 }
 
 body {
-    background-color: #f1f9fd;
     font-family: 'Sora', sans-serif;
 }
 
@@ -161,8 +169,8 @@ header .authBtnDiv a.apply__Doctor-Btn {
 
 .tabDiv .findDoctorBox .inputDiv input,
 .tabDiv .findDoctorBox .inputDiv select {
-    padding: 10px 10px;
-    width: 90%;
+    padding: 10px 10px !important;
+    width: 90% !important;
     color: #7D7D7D;
     font-weight: 300;
     font-family: 'Sora', sans-serif;
@@ -666,7 +674,7 @@ footer .footer-widgets ul li a{
     font-size: 16px;
 }
 /*********** Contact - Us - CSS ***************/
-.contactBanner{
+.commonBanner{
     background-image: url(../img/banner.png);
     width: 100%;
     background-size: cover;
@@ -675,15 +683,248 @@ footer .footer-widgets ul li a{
     background-repeat: no-repeat;
     position: relative;
 }
-.contactBanner .backDrop{
+.commonBanner .backDrop{
     background: linear-gradient(90deg, rgba(0, 82, 212, 0.4) 0%, rgba(67, 100, 247, 0.4) 50%, rgba(111, 177, 252, 0) 100%);
     position: absolute;
     z-index: 999999;
     width: 100%;
     height: 100%;
 }
+.commonBanner .contentBanner{
+    position: relative;
+    z-index: 99999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0px 70px;
+}
+.commonBanner .contentBanner h4{
+    color: var(--whiteColor);
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+.commonBanner .contentBanner p{
+    font-size: 18px;
+    color: var(--whiteColor);
+    font-weight: 400;
+}
+.getInTouch{
+    padding: 70px 25px;
+    background: #F8F9FA;
+}
+.getInTouch .contactDetail .commonContactBox{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 20%);
+    display: flex;
+    padding: 19px 30px;
+    margin-bottom: 20px;
+}
+.getInTouch .contactDetail .commonContactBox a{
+    display: block;
+    padding: 12px 17px;
+    border-radius: 100%;
+    background: rgba(22, 120, 242, 0.15);
+    margin-right: 20px;
+}
+.getInTouch .contactDetail .commonContactBox a i{
+    font-size: 18px;
+}
+.getInTouch .contactDetail .commonContactBox .infoDiv h5{
+    font-size: 16px;
+    font-weight: 600;
+}
+.getInTouch .contactDetail .commonContactBox .infoDiv p{
+    font-weight: 400;
+    font-size: 16px;
+    color: #717F8E;
+}
+.getInTouch .contactDetail .followUs h5{
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.getInTouch .contactDetail .followUs a{
+    margin-right: 18px;
+}
+.getInTouch .formDiv{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 20%);
+    padding: 35px 40px;
+    width: 100%;
+    max-width: 85%;
+}
+.getInTouch .formDiv h3{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.getInTouch .formDiv p{
+    font-size: 16px;
+    font-weight: 300;
+    color: #717F8E;
+}
+.getInTouch .formDiv form{
+    margin-top: 35px;
+}
+.inputDiv input,
+.inputDiv textarea,
+.inputDiv select{
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #717F8E;
+    padding: 15px 20px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+/*********** Search - Doctor - CSS ************/
+.mainSearch{
+    padding: 22px;
+}
+.mainSearch .sortingDiv{
+    text-align: right;
+}
+.mainSearch .sortingDiv select{
+    background: #FFFFFF;
+    border: 0.5px solid #D0D0D0;
+    border-radius: 2px;
+    padding: 6px 9px;
+    color: #717F8E;
+    margin-left: 14px;
+}
+.mainSearch p.numberOfDoctor{
+    font-size: 18px;
+    font-weight: 400;
+}
+.mainSearch .search-filter{
+    margin-top: 25px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgb(0 0 0 / 25%);
+    border-radius: 6px;
+    padding: 18px 26px;
+}
+.mainSearch .search-filter h4{
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+.mainSearch .search-filter h4 img{
+    width: 16px;
+    margin-right: 12px;
+}
+.inputDiv label{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.mainSearch .search-filter .formDiv {
+    margin-top: 40px;
+}
+.mainSearch .search-filter .formDiv .inputDiv input,
+.mainSearch .search-filter .formDiv .inputDiv select{
+    padding: 10px 17px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+}
+.mainSearch .search-filter .multi-gender p{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+.mainSearch .search-filter .multi-gender label{
+    font-weight: 300;
+}
+.mainSearch .search-filter .formDiv button{
+    width: 100%;
+    margin-top: 28px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.mainSearch .search-result{
+    margin-top: 25px;
+}
+.mainSearch .search-result .doctorCard{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgb(0 0 0 / 25%);
+    padding: 18px 28px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+.mainSearch .search-result .doctorCard .doctorInfo{
+    display: flex;
+}
+
+.mainSearch .search-result .doctorCard .doctorInfo .infoDiv{
+    margin-left: 17px;
+}
+.mainSearch .search-result .doctorCard .doctorInfo .infoDiv h4{
+    font-size: 18px;
+}
+.mainSearch .search-result .doctorCard .doctorInfo .infoDiv p,
+.mainSearch .search-result .doctorCard .doctorInfo span,
+.mainSearch .search-result .doctorCard .leatestRating p{
+    color: var(--grayColor);
+    font-size: 14px;
+    font-weight: 400;
+}
+.mainSearch .search-result .doctorCard .doctorInfo .infoDiv .specility{
+    color: var(--commonColor);
+    font-weight: 300;
+}
+.mainSearch .search-result .doctorCard .doctorInfo .infoDiv .specility img{
+    margin-right: 8px;
+}
+.mainSearch .search-result .doctorCard .doctorInfo .infoDiv .ratingDiv i{
+    color: var(--ratingColor);
+    font-size: 14px;
+}
+.mainSearch .search-result .doctorCard .leatestRating{
+    margin-top: 15px;
+}
+.mainSearch .search-result .doctorCard .leatestRating h4{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.mainSearch .feedBack .feedBackList{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.mainSearch .feedBack .feedBackList li img{
+    margin-right: 10px;
+}
+.mainSearch .feedBack .feedBackList li{
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+.mainSearch .feedBack button{
+    width: 85%;
+    position: absolute;
+    bottom: 0px;
+    right: 17px;
+    background: transparent;
+    color: #1678f2;
+    border-color: #1678f2;
+    border: 1px solid;
+    cursor: pointer;
+}
 /*********** Media - Query - CSS **************/
 @media screen and (max-width: 1300px) {
+    .getInTouch .contactDetail .commonContactBox{
+        padding: 19px 15px;
+    }
+    .getInTouch .contactDetail .commonContactBox a i {
+        font-size: 14px;
+    }
+    .getInTouch .contactDetail .commonContactBox a{
+        padding: 10px 17px;
+        margin-right: 10px;
+    }
     .awardDiv .multiAward .awardBox img {
         margin-right: 15px;
     }
@@ -753,14 +994,25 @@ footer .footer-widgets ul li a{
     }
     .topReatedDoctor .multiDoctorDiv .doctorCard .cardBody .doctorDetail p,
     .patientFeedBack .patientsSlider .patientsBox .profileDiv span,
-    .leatestNew .multiNews .newsDiv .newsContent h5{
+    .leatestNew .multiNews .newsDiv .newsContent h5,
+    .getInTouch .contactDetail .commonContactBox .infoDiv h5{
         font-size: 14px;
     }
     .topReatedDoctor .multiDoctorDiv .doctorCard .cardBody .doctorSpecialities p,
     .topReatedDoctor .multiDoctorDiv .doctorCard .cardBody .doctorSpecialities p span,
     .leatestNew .multiNews .newsDiv .newsContent a,
-    .leatestNew .multiNews .newsDiv .newsContent p{
+    .leatestNew .multiNews .newsDiv .newsContent p,
+    .getInTouch .contactDetail .commonContactBox .infoDiv p,
+    .mainSearch .search-filter .multi-gender label{
         font-size: 12px;
+    }
+    .mainSearch .search-filter{
+        padding: 18px 10px;
+    }
+    .mainSearch .feedBack button{
+        padding: 10px 18px;
+        font-size: 12px;
+        bottom: 10px;
     }
 }
 @media screen and (max-width: 1070px) {
@@ -781,6 +1033,18 @@ footer .footer-widgets ul li a{
     }
 }
 @media screen and (max-width: 992px) {
+    .mainSearch .search-result .doctorCard .doctorInfo img.doctor-img{
+        width: 100%;
+        height: 100%;
+    }
+    .mainSearch .feedBack button{
+        position: initial;
+        width: 100%;
+    }
+    .getInTouch .formDiv {
+        max-width: 100%;
+        margin-top: 50px;
+    }
     .leatestNew .multiNews .newsDiv{
         width: 100%;
         max-width: 50%;
@@ -893,6 +1157,23 @@ footer .footer-widgets ul li a{
     }
 }
 @media screen and (max-width: 580px) {
+    .commonBanner .contentBanner{
+        padding: 0px 20px;
+    }
+    .commonBanner .contentBanner h4{
+        font-size: 26px;
+    }
+    .commonBanner .contentBanner p,
+    .mainSearch p.numberOfDoctor{
+        font-size: 14px;
+    }
+    .mainSearch .sortingDiv{
+        text-align: left;
+        margin-top: 20px;
+    }
+    .getInTouch .formDiv{
+        padding: 35px 20px;
+    }
     .signUpDiv{
         margin: 50px 0px;
     }
