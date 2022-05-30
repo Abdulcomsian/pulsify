@@ -6,10 +6,11 @@ namespace App\Utils;
 
 use Illuminate\Support\Facades\File;
 use Notification;
+use App\Models\DoctorReview;
 
 class HelperFunctions
 {
-public static function saveFile($oldFile = null, $newFile, $filePath)
+    public static function saveFile($oldFile = null, $newFile, $filePath)
     {
         try {
             $public_path = public_path($filePath);
@@ -28,5 +29,13 @@ public static function saveFile($oldFile = null, $newFile, $filePath)
     public function path()
     {
     }
+
+    //avg function for rating
+    public static function avg($id)
+    {
+        return DoctorReview::where('doctor_detail_id',$id)->avg('overall_rating');
+    }
+
+
 }
        

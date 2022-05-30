@@ -26,6 +26,7 @@ class CreateDoctorDetailsTable extends Migration
             $table->string('image')->nullable();
             $table->unsignedBigInteger('specialtie_id')->nullable();
             $table->foreign('specialtie_id')->references('id')->on('specialties');
+            $table->integer('hospital_id')->nullable();
             $table->string('gender')->nullable();
             $table->string('lat')->nullable();
             $table->string('long')->nullable();
