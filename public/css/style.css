@@ -61,6 +61,8 @@ select {
 /********* Header - CSS ****************/
 header{
     padding: 0px 50px;
+    position: relative;
+    z-index: 99999;
 }
 header .navbar-nav {
     margin-left: 57px;
@@ -104,10 +106,23 @@ header .authBtnDiv a.apply__Doctor-Btn {
     background-color: var(--commonColor);
     color: var(--whiteColor);
 }
+.hoverDoctor{
+    background-color: transparent !important;
+    color: var(--commonColor) !important;
+    border: 1px solid var(--commonColor);
 
+}
+.dropdown-menu{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    border-bottom: 4px solid #1678f2;
+}
 /****************** Main - Banner - CSS **********/
 .mainHeroSection {
     position: relative;
+    background: #f1f9fd;
+    top: -100px;
 }
 
 .mainHeroSection .searchDiv {
@@ -119,7 +134,7 @@ header .authBtnDiv a.apply__Doctor-Btn {
 }
 
 .mainHeroSection .bannerLeftDiv {
-    padding: 200px 30px;
+    padding: 300px 30px 200px;
 }
 
 .mainHeroSection .bannerLeftDiv h5 {
@@ -149,7 +164,7 @@ header .authBtnDiv a.apply__Doctor-Btn {
 }
 
 .mainHeroSection .bannerRightDiv {
-    padding: 60px 0px;
+    padding: 150px 0px 60px;
 }
 
 .tabDiv .findDoctorBox {
@@ -422,14 +437,14 @@ header .authBtnDiv a.apply__Doctor-Btn {
 .patientFeedBack{
     padding: 70px 0px;
 }
-.patientFeedBack .slick-dots li button:before{
+.slick-dots li button:before{
     content: "" !important;
-    width: 12px;
-    height: 12px;
+    width: 12px !important;
+    height: 12px !important;
     background-color:  var(--commonColor) !important;
     border-radius: 100%;
 }
-.patientFeedBack .slick-dots li button{
+.slick-dots li button{
     width: 12px !important;
     height: 12px !important;
 }
@@ -686,7 +701,7 @@ footer .footer-widgets ul li a{
 .commonBanner .backDrop{
     background: linear-gradient(90deg, rgba(0, 82, 212, 0.4) 0%, rgba(67, 100, 247, 0.4) 50%, rgba(111, 177, 252, 0) 100%);
     position: absolute;
-    z-index: 999999;
+    z-index: 101;
     width: 100%;
     height: 100%;
 }
@@ -782,6 +797,7 @@ footer .footer-widgets ul li a{
 /*********** Search - Doctor - CSS ************/
 .mainSearch{
     padding: 22px;
+    background: #F8F9FA;
 }
 .mainSearch .sortingDiv{
     text-align: right;
@@ -863,6 +879,13 @@ footer .footer-widgets ul li a{
 .mainSearch .search-result .doctorCard .doctorInfo .infoDiv h4{
     font-size: 18px;
 }
+.mainSearch .search-result .doctorCard .doctorInfo .infoDiv p{
+    display: flex;
+    align-items: center;
+}
+.mainSearch .search-result .doctorCard .doctorInfo .infoDiv p img{
+    margin-right: 5px;
+}
 .mainSearch .search-result .doctorCard .doctorInfo .infoDiv p,
 .mainSearch .search-result .doctorCard .doctorInfo span,
 .mainSearch .search-result .doctorCard .leatestRating p{
@@ -886,7 +909,7 @@ footer .footer-widgets ul li a{
 }
 .mainSearch .search-result .doctorCard .leatestRating h4{
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 5px;
 }
 .mainSearch .feedBack .feedBackList{
@@ -912,6 +935,235 @@ footer .footer-widgets ul li a{
     border-color: #1678f2;
     border: 1px solid;
     cursor: pointer;
+}
+/*********** Doctor - FeedBack - CSS **********/
+.doctor-feedBack{
+    width: 100%;
+    max-width: 90%;
+    margin: auto;
+}
+.doctor-feedBack .reviews-overview-div{
+    width: 100%;
+}
+.doctor-feedBack .reviews-overview-div{
+    background: var(--whiteColor);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+.doctor-feedBack .reviews-overview-div .pills-div .nav-pills li{
+    width: 50%;
+    border-bottom: 1px solid #E7E7E7;
+}
+.doctor-feedBack .reviews-overview-div .pills-div .nav-pills li a{
+    width: 100%;
+    text-align: center;
+    padding: 8px 0px;
+    
+    display: block;
+}
+.doctor-feedBack .reviews-overview-div .pills-div .nav-pills li.active{
+    background-color: var(--commonColor);
+    border-radius: 6px 6px 0px 0px;
+    border: none;
+}
+.doctor-feedBack .reviews-overview-div .pills-div .nav-pills li a{
+    font-size: 18px;
+    color: #000;
+}
+.doctor-feedBack .reviews-overview-div .pills-div .nav-pills li.active a{
+    color: var(--whiteColor);
+    border-radius: 6px 6px 0px 0px;
+}
+.doctor-feedBack .reviews-overview-div .tab-div{
+    padding: 36px 52px;
+}
+.doctor-feedBack .reviews-overview-div .tab-div h3{
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.doctor-feedBack .reviews-overview-div .tab-div p{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.doctor-feedBack .reviews-overview-div .commonList ul{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    position: relative;
+}
+.doctor-feedBack .reviews-overview-div .commonList ul::before{
+    content: "";
+    width: 1px;
+    height: 52%;
+    background: #CACACA;
+    position: absolute;
+    left: 4px;
+    top: 15px;
+}
+.doctor-feedBack .reviews-overview-div .commonList li{
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+.doctor-feedBack .reviews-overview-div .commonList li:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    left: 0px;
+    border-radius: 100%;
+    background: rgba(22, 120, 242, 0.3);
+    border: 1px solid #1678F2;
+    top: 8px;
+    z-index: 9999999999;
+}
+.doctor-feedBack .reviews-overview-div .commonList li p{
+    margin-bottom: 0px;
+}
+.doctor-feedBack .reviews-overview-div .commonList li span{
+    color: #717f8e;
+    display: block;
+}
+.doctor-feedBack .reviews-overview-div .workExperience ul::before {
+    height: 70% !important;
+}
+.doctor-feedBack .reviews-overview-div .common-multi-li-div ul{
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+.doctor-feedBack .reviews-overview-div .common-multi-li-div ul li{
+    background: rgba(63, 135, 247, 0.13);
+    border-radius: 6px;
+    padding: 9px 20px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.doctor-feedBack #reviews h2{
+    font-size: 24px;
+    font-weight: 600;
+}
+.doctor-feedBack #reviews span{
+    margin-right: 15px;
+}
+.doctor-feedBack #reviews span i {
+    color: var(--ratingColor);
+}
+.doctor-feedBack ul{
+    padding: 0px;
+    list-style: none;
+}
+.doctor-feedBack .rate-doctor-div ul{
+    margin-top: 25px;
+}
+.doctor-feedBack .rate-doctor-div ul li{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.doctor-feedBack .rate-doctor-div ul li span{
+    display: block;
+    color: #717F8E;
+}
+.doctor-feedBack .rate-doctor-div ul li span i{
+    color: #C4C4C4 !important;
+}
+.doctor-feedBack .comment-box{
+    margin-top: 20px;
+}
+.doctor-feedBack .comment-box button{
+    font-weight: 600;
+    padding: 15px 30px;
+}
+.doctor-feedBack hr{
+    margin-top: 36px;
+    margin-bottom: 22px;
+}
+.doctor-feedBack .top-review .top-reveiw-slider .reviewBox{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 9px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    padding: 26px 18px;
+    margin: 5px 14px;
+}
+.doctor-feedBack .top-review .top-reveiw-slider .reviewBox .infoDiv{
+    display: flex;
+    align-items: flex-start;
+}
+.doctor-feedBack .top-review .top-reveiw-slider .reviewBox .infoDiv .contentDiv{
+    margin-left: 22px;
+}
+.doctor-feedBack .top-review .top-reveiw-slider .reviewBox .infoDiv .contentDiv h4{
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.doctor-feedBack .top-review .top-reveiw-slider .reviewBox .infoDiv .contentDiv p{
+    font-size: 14px;
+    font-weight: 400;
+}
+.doctor-feedBack .top-review .top-reveiw-slider .slick-dots{
+    bottom: -50px;
+}
+.doctor-feedBack .multi-review .patientBox .contentDiv{
+    margin-left: 32px;
+}
+.doctor-feedBack .multi-review .patientBox{
+    display: flex;
+    align-items: flex-start;
+}
+.doctor-feedBack .multi-review .patientBox ul{
+    display: flex;
+}
+.doctor-feedBack .multi-review .patientBox ul li{
+    margin-right: 32px;
+}
+.doctor-feedBack .multi-review .patientBox .contentDiv h3{
+    margin-bottom: 6px;
+}
+.doctor-feedBack .multi-review .patientBox .contentDiv span{
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 11px;
+}
+.doctor-feedBack .multi-review .patientBox .contentDiv p.recommended-text{
+    color: #3CB44A;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 11px;
+    display: flex;
+    align-items: center;
+}
+.doctor-feedBack .multi-review .patientBox .contentDiv p.recommended-text img{
+    margin-right: 14px;
+}
+.doctor-feedBack .multi-review .patientBox .contentDiv ul li p{
+    color: #717F8E;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+.doctor-feedBack .multi-review .patientBox .contentDiv ul li p i{
+    color: var(--ratingColor);
+}
+.doctor-feedBack .multi-review .patientBox .contentDiv p,
+.doctor-feedBack .multi-review .patientBox .overall p{
+    color: #717F8E;
+    font-size: 14px;
+    font-weight: 400;
+}
+.doctor-feedBack .multi-review .patientBox .overall {
+    width: 30%;
+    text-align: center;
+}
+.doctor-feedBack .multi-review .patientBox .overall span{
+    margin: 0px !important;
+}
+.patientReview{
+    margin-top: 100px;
 }
 /*********** Media - Query - CSS **************/
 @media screen and (max-width: 1300px) {
@@ -1033,6 +1285,17 @@ footer .footer-widgets ul li a{
     }
 }
 @media screen and (max-width: 992px) {
+    .doctor-feedBack .multi-review .patientBox{
+        display: block;
+    }
+    .doctor-feedBack .multi-review .patientBox .overall{
+        width: auto;
+        text-align: left;
+    }
+    .doctor-feedBack .multi-review .patientBox .contentDiv{
+        margin-top: 30px;
+        margin-left: 0px;
+    }
     .mainSearch .search-result .doctorCard .doctorInfo img.doctor-img{
         width: 100%;
         height: 100%;
@@ -1072,7 +1335,7 @@ footer .footer-widgets ul li a{
         left: 44%;
     }
     .topSpecialities{
-        padding: 120px 0px;
+        padding: 0px;
     }
     .topSpecialities .multiSpecialities{
         max-width: 100%;
@@ -1107,6 +1370,52 @@ footer .footer-widgets ul li a{
     }
 }
 @media screen and (max-width: 768px) {
+    .medicalExpert .medicalRightDiv h3 {
+        font-size: 24px;
+        line-height: 35px;
+    }
+    
+    
+    .mainHeroSection .bannerLeftDiv h1 {
+        font-size: 40px;
+    }    
+    .commonTitle{
+        font-size: 24px;
+    }
+    .mainSearch .search-result .doctorCard .doctorInfo{
+        display: block;
+        text-align: center;
+    }
+    .mainSearch .search-result .doctorCard .doctorInfo img.doctor-img{
+        border-radius: 100%;
+        width: 50%;
+    }
+    .mainSearch .search-result .doctorCard .leatestRating,
+    .mainSearch .feedBack .feedBackList li{
+        text-align: center;
+    }
+    .mainSearch .feedBack .feedBackList{
+        margin: 20px 0px;
+    }
+    .mainSearch .search-result .doctorCard .doctorInfo .infoDiv p{
+        justify-content: center;
+    }
+    .mainSearch .search-result .doctorCard .doctorInfo .infoDiv{
+        margin: 20px 0px !important;
+    }
+    .doctor-feedBack .top-review .top-reveiw-slider .reviewBox{
+        margin: 5px;
+    }
+    .doctor-feedBack #reviews span,
+    .doctor-feedBack .reviews-overview-div .tab-div p{
+        font-size: 14px;
+    }
+    .doctor-feedBack #reviews h2{
+        font-size: 18px;
+    }
+    .doctor-feedBack .reviews-overview-div .tab-div{
+        padding: 20px;
+    }
     .signUpDiv .leftDiv{
         display: none;
     }
@@ -1120,10 +1429,10 @@ footer .footer-widgets ul li a{
     .topSpecialities .multiSpecialities,
     .tabDiv .findDoctorBox,
     .awardDiv .multiAward{
-        display: block;
+        display: block !important;
     }
     .mainHeroSection .bannerLeftDiv {
-        padding: 100px 0px;
+        padding: 50px 0px;
         text-align: center;
     }
     .awardDiv .multiAward .awardBox{
@@ -1147,7 +1456,7 @@ footer .footer-widgets ul li a{
         margin-bottom: 5px;
     }
     .mainHeroSection{
-        padding: 50px;
+        padding: 150px 50px;
     }
     .pillsDiv li{
         width: 100%;
@@ -1157,6 +1466,10 @@ footer .footer-widgets ul li a{
     }
 }
 @media screen and (max-width: 580px) {
+    .doctor-feedBack .multi-review .patientBox ul{
+        display: flex;
+        flex-wrap: wrap;
+    }
     .commonBanner .contentBanner{
         padding: 0px 20px;
     }

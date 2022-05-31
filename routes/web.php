@@ -24,8 +24,17 @@ Route::get('/contact-us', function () {
   return view('frontend.contact-us');
 });
 
+Route::get('/doctor-feedback', function () {
+  return view('frontend.doctor.doctor-feed-back');
+});
+Route::get('/hospital-feedback', function () {
+  return view('frontend.doctor.hospital-feed-back');
+});
+
+
 //search doctors
 Route::get('/search', [DoctorsController::class, 'search'])->name('search.doctors');
+
 
 
   Route::get('/', [HomeController::class, 'home'])->name('home');
