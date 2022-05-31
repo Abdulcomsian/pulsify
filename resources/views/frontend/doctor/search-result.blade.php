@@ -115,7 +115,7 @@
                                         <li><img src="{{asset('img/feddBack.png')}}" alt="" class="img-fluid"> {{count($doctor->drating)}} Feedback</li>
                                         <li><img src="{{asset('img/location-pin.png')}}" alt="" class="img-fluid">{{$doctor->city}}</li>
                                     </ul>
-                                    <button class="commonButton">Give Feedback</button>
+                                    <a href="{{route('doctors.feedback',Crypt::encrypt($doctor->id))}}"><button class="commonButton">Give Feedback</button></a>
                                 </div>
                             </div>
                         </div>

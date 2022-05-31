@@ -258,6 +258,7 @@
                                         <!--begin::Form-->
                                         <form id="kt_modal_edit_user_form" class="form" method="post" action="{{route('doctors.store')}}" enctype="multipart/form-data">
                                             @csrf
+                                            @method('put')
                                             <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
@@ -347,10 +348,10 @@
                                                     <label class="required fw-bold fs-6 mb-2">Gender</label>
 
                                                     <label class="radio-inline">
-                                                      <input type="radio" name="gender" id="edit_gender" value="male" required>Male
+                                                      <input type="radio" name="gender" id="edit_gender_male" value="male" required>Male
                                                     </label>
                                                     <label class="radio-inline">
-                                                      <input type="radio" name="gender" id="edit_gender" value="female" required>Female
+                                                      <input type="radio" name="gender" id="edit_gender_female" value="female" required>Female
                                                     </label>
                                                 </div>
                                                 <div class="fv-row mb-7">
@@ -367,7 +368,7 @@
                                                     <label class="required fw-bold fs-6 mb-2">Image</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="file" name="image" class="form-control form-control-solid mb-3 mb-lg-0" accept="image/*" required />
+                                                    <input type="file" name="image" class="form-control form-control-solid mb-3 mb-lg-0" accept="image/*"/>
                                                     <!--end::Input-->
                                                 </div>
 
@@ -378,7 +379,7 @@
                                             <div class="text-center pt-15">
                                                 <button type="reset" class="btn btn-white me-3" data-kt-users-modal-action="cancel">Discard</button>
                                                 <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
-                                                    <span class="indicator-label">Submit</span>
+                                                    <span class="indicator-label">Update</span>
                                                     <span class="indicator-progress">Please wait...
                                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                                 </button>
@@ -443,8 +444,7 @@
                                 <td><img src="{{asset($doc->image)}}" width="60px" height="60px" /></td>
                                 <td class="text-end">
 
-                                    <a href="#" onclick="edit_hospital('{{json_encode($doc)}}')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                        <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
+                                    <a href="#" onclick="edit_hospital(@php 'json_encode($doc)' @endphp)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                         <span class="svg-icon svg-icon-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953)" />
@@ -480,7 +480,8 @@
 @include('layouts.sweetalert.sweetalert_js')
 <script type="text/javascript">
     function edit_hospital($data){
-        var data=JSON.parse($data);
+         var data=JSON.parse($data);
+         $("#kt_modal_edit_user_form").attr('action', 'doctors/' + data.id);
          $("#edit_name").val(data.full_name);
          $("#edit_email").val(data.email);
          $("#edit_title").val(data.title);
@@ -489,16 +490,14 @@
          $("#edit_full_address").val(data.address);
          $("#edit_specialtie_id").val(data.specialtie_id);
          $("#edit_hospital_id").val(data.hospital_id);
-         console.log(data.gender);
          if(data.gender == 'male')
          {
-            $("#edit_gender").attr('value','male').prop('checked','false');
-            $("#edit_gender").attr('value','male').prop('checked','true');
+            $("#edit_gender_male").prop('checked','true');
          }
          if(data.gender == null){
-            $("#edit_gender").attr('value','female').prop('checked','false');
-            $("#edit_gender").attr('value','female').prop('checked','true');
+            $("#edit_gender_female").prop('checked','true');
          }
+         $("#edit_description").val(data.description);
          $("#kt_modal_edit_user").modal('show');
     }
 </script>

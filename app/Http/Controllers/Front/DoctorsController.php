@@ -52,4 +52,13 @@ class DoctorsController extends Controller
              }
         return view('frontend.doctor.search-result');
     }
+
+    //feedback
+    public function doctor_feedback($id)
+    {
+       $doctorid= \Crypt::decrypt($id);
+       $doctors_feedback = DoctorDetail::with('country','sepcial','drating')->find($doctorid);
+       return view('frontend.doctor.doctor-feed-back',compact('doctors_feedback')); 
+    }
+    
 }

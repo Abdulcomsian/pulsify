@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\SpecialtyController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\DoctorsController;
+use App\Http\Controllers\Front\ContactUsController;
 use App\Http\Controllers\Admin\HospitalController;
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +21,9 @@ use App\Http\Controllers\Admin\HospitalController;
 
 
 
-Route::get('/contact-us', function () {
-  return view('frontend.contact-us');
-});
 
-Route::get('/doctor-feedback', function () {
-  return view('frontend.doctor.doctor-feed-back');
-});
+
+
 Route::get('/hospital-feedback', function () {
   return view('frontend.doctor.hospital-feed-back');
 });
@@ -34,7 +31,12 @@ Route::get('/hospital-feedback', function () {
 
 //search doctors
 Route::get('/search', [DoctorsController::class, 'search'])->name('search.doctors');
+Route::get('/doctor-feedback/{id}', [DoctorsController::class, 'doctor_feedback'])->name('doctors.feedback');
 
+
+//contact us rutes
+Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
+Route::get('contact-save', [ContactUsController::class, 'store'])->name('contact-us.store');
 
 
   Route::get('/', [HomeController::class, 'home'])->name('home');

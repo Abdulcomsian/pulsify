@@ -46,31 +46,32 @@
                     <div class="formDiv">
                         <h3>Get In Touch</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lectus tincidunt cras cras ultricies ultrices quam.</p>
-                        <form action="">
+                        <form action="{{route('contact-us.store')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="inputDiv">
-                                        <input type="text" name="" id="" placeholder="Your Name">
+                                        <input type="text" name="name" id="" placeholder="Your Name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="inputDiv">
-                                        <input type="text" name="" id="" placeholder="Email">
+                                        <input type="email" name="email" id="" placeholder="Email" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="inputDiv">
-                                        <input type="text" name="" id="" placeholder="Phone Number">
+                                        <input type="text" name="phone" id="" placeholder="Phone Number" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="inputDiv">
-                                        <input type="text" name="" id="" placeholder="Subject">
+                                        <input type="text" name="subject" id="" placeholder="Subject" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="inputDiv">
-                                        <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                                        <textarea name="message" id="" cols="30" rows="10" placeholder="Message" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

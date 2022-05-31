@@ -145,7 +145,7 @@
                         @foreach( $doctors as $doc)
                         <div class="col-lg-4">
                             <div class="doctorCard">
-                                <img src="{{asset($doc->image)}}" alt="" class="img-fluid img-thumbnail w-25 rounded-circle" >
+                                <img src="{{asset($doc->image)}}" alt="" class="img-fluid img-thumbnail w-25 rounded-circle" style="height: 90px">
                                 <div class="cardBody">
                                     <p>{{$doc->full_name}}</p>
                                     <span>Highly recommended</span>

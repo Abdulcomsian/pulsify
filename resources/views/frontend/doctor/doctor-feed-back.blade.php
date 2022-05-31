@@ -18,10 +18,10 @@
                                 <div class="row">
                                     <div class="col-lg-9">
                                         <div class="doctorInfo">
-                                            <img src="{{asset('img/doctor.png')}}" alt="" class="img-fluid doctor-img">
+                                            <img src="{{asset($doctors_feedback->image)}}" alt="" class="img-fluid doctor-img" style="width: 18% !important">
                                             <div class="infoDiv">
-                                                <h4>John Doe</h4>
-                                                <p>MBBS, MS - General Surgery, MCh - Pediatric optometry</p>
+                                                <h4>{{$doctors_feedback->full_name}}</h4>
+                                                <p></p>
                                                 <p class="specility"><img src="{{asset('img/teeth.png')}}" alt=""
                                                         class="img-fluid"> Dentist</p>
                                                 <div class="ratingDiv">
