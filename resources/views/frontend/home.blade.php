@@ -1,6 +1,7 @@
 
  
     @extends('layouts.Front.master-front')
+    @php use App\Utils\HelperFunctions; @endphp
     @section('content')
     <main class="pageWrapper">
         <div class="mainHeroSection">
@@ -33,31 +34,34 @@
                     <div class="tabDiv">
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active show">
-                                <form action="">
+                                <form action="{{route('search.doctors')}}" method="get">
                                     <div class="findDoctorBox">
 
                                         <div class="inputDiv">
-                                            <input type="text" name="" id="" placeholder="Enter name or speciality ">
+                                            <input type="text" name="name" id="" placeholder="Enter name of Doctor">
                                         </div>
                                         <div class="inputDiv">
-                                            <select name="" id="">
+                                            <select name="location" id="" required>
                                                 <option value="">Location</option>
                                                 @foreach($countries as $country)
-                                                <option value="{{$country->id}}">{{$country->country_name}}</option>
+                                                <option value="{{$country->country_name.'-'.$country->id}}">{{$country->country_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="inputDiv">
-                                            <select name="" id="">
+                                            <select name="speciality" id="" required>
                                                 <option value="">Speciality</option>
                                                  @foreach($speciality as $spe)
-                                                 <option value="{{$spe->id}}">{{$spe->name}}</option>
+                                                 <option value="{{$spe->name.'-'.$spe->id}}">{{$spe->name}}</option>
                                                  @endforeach
                                             </select>
                                         </div>
                                         <div class="inputDiv">
-                                            <select name="" id="">
-                                                <option value="Health Insurance">Health Insurance</option>
+                                            <select name="hospital" id="">
+                                                <option  value="">Health Insurance</option>
+                                                @foreach($hospitals as $hospital)
+                                                <option value="{{$hospital->id}}">{{$hospital->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="inputDiv">
@@ -91,7 +95,7 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="multiSpecialities d-flex">
+                <!-- <div class="multiSpecialities d-flex">
                     <div class="commonBox">
                         <div class="imgBox">
                             <img src="http://127.0.0.1:8000/uploads/specialty/165355068782326.png" alt="" class="img-fluid">
@@ -122,7 +126,7 @@
                         </div>
                         <p>Dentist</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="topReatedDoctor">
@@ -148,7 +152,7 @@
                                     <div class="doctorSpecialities">
                                         <p>{{$doc->sepcial->name}}</p>
                                         <p>{{$doc->country->country_name}}, {{$doc->city}}</p>
-                                        <p class="rating"><i class="fa fa-star"></i>4.54<span>37 reviews</span></p>
+                                        <p class="rating"><i class="fa fa-star"></i>{{HelperFunctions::avg($doc->id)}} <span>{{count($doc->drating)}} reviews</span></p>
                                     </div>
                                     <div class="doctorDetail">
                                         <p>{{ \Illuminate\Support\Str::limit($doc->description, 120, '...') }}</p>

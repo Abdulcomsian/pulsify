@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\Specialty;
 use App\Models\DoctorDetail;
+use App\Models\Hospital;
 use Illuminate\Support\Facades\Validator;
 use App\Utils\HelperFunctions;
 use Illuminate\Support\Facades\Redirect;
@@ -14,10 +15,12 @@ class DoctorController extends Controller
 {
     public function index()
     {
+       
         $countries = Country::get();
         $Specialty = Specialty::get();
+        $hospitals = Hospital::get();
         $doctors= DoctorDetail::with('country','sepcial')->get();
-        return view('backend.index', compact('countries', 'Specialty','doctors'));
+        return view('backend.index', compact('countries', 'Specialty','doctors','hospitals'));
     }
     public function create()
     {

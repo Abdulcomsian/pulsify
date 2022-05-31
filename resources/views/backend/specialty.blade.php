@@ -101,7 +101,7 @@
                                                     <label class="required fw-bold fs-6 mb-2">Featured</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="checkbox" name="is_featured" class=" mb-3 mb-lg-0" required />
+                                                    <input type="checkbox" name="is_featured" class=" mb-3 mb-lg-0"/>
                                                     <!--end::Input-->
                                                 </div>
                                                 <div class="fv-row mb-7">
@@ -186,7 +186,7 @@
                                                     <label class="required fw-bold fs-6 mb-2">Featured</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="checkbox" name="is_featured" id="editfeatured" class=" mb-3 mb-lg-0" required />
+                                                    <input type="checkbox" name="is_featured" id="editfeatured" class=" mb-3 mb-lg-0"  />
                                                     <!--end::Input-->
                                                 </div>
                                                 <div class="fv-row mb-7">
@@ -252,7 +252,7 @@
 
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$sp->name}}</td>
-                                <td>{{$sp->is_featured}}</td>
+                                <td>{{$sp->is_featured==1 ? 'Yes':'No'}}</td>
                                 <td><img src="{{asset($sp->image)}}" width="60px" height="60px" /></td>
                                 <td class="">
                                     <a href="#" onclick="editspecialty('{{json_encode($sp)}}')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">

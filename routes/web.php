@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\SpecialtyController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\DoctorsController;
 use App\Http\Controllers\Admin\HospitalController;
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,18 @@ use App\Http\Controllers\Admin\HospitalController;
 Route::get('/contact-us', function () {
   return view('frontend.contact-us');
 });
-Route::get('/search', function () {
-  return view('frontend.doctor.search-result');
-});
+
 Route::get('/doctor-feedback', function () {
   return view('frontend.doctor.doctor-feed-back');
 });
 Route::get('/hospital-feedback', function () {
   return view('frontend.doctor.hospital-feed-back');
 });
+
+
+//search doctors
+Route::get('/search', [DoctorsController::class, 'search'])->name('search.doctors');
+
 
 
   Route::get('/', [HomeController::class, 'home'])->name('home');
