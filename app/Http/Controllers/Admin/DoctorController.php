@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\Specialty;
 use App\Models\DoctorDetail;
+use App\Models\DoctorReview;
+use App\Models\HospitalRating;
 use App\Models\Hospital;
 use Illuminate\Support\Facades\Validator;
 use App\Utils\HelperFunctions;
@@ -22,6 +24,16 @@ class DoctorController extends Controller
         $doctors= DoctorDetail::with('country','sepcial')->get();
         return view('backend.index', compact('countries', 'Specialty','doctors','hospitals'));
     }
+
+    public function dashboard()
+    {
+        $doctors = DoctorDetail::count();
+        $hospitals = Hospital::count(); 
+        $doctor_reviews = DoctorReview::count();
+        $hospital_rating = HospitalRating::count();
+        return view('backend.dashboard',compact('doctor_reviews', 'hospital_rating','doctors','hospitals'));
+    }
+
     public function create()
     {
         //

@@ -19,3 +19,4 @@
             <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet">
             @toastr_css
     </head>
+    @stack('styles')

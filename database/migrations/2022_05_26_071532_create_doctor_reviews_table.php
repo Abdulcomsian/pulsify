@@ -17,11 +17,11 @@ class CreateDoctorReviewsTable extends Migration
             $table->id();
             $table->string('review')->nullable();
             $table->string('overall_rating')->nullable();
-             $table->string('cleanliness_rating')->nullable();
-            $table->string('medical_staff_rating')->nullable();
-            $table->string('reception_rating')->nullable();
-            $table->string('helpfullness_rating')->nullable();
-            $table->string('communication_rating')->nullable();
+             $table->string('bedside_manner_rating')->nullable();
+            $table->string('knowledge_rating')->nullable();
+            $table->string('punctuality_rating')->nullable();
+            $table->string('scheduling_rating')->nullable();
+            $table->string('treatment_rating')->nullable();
             $table->unsignedBigInteger('doctor_detail_id')->nullable();
             $table->foreign('doctor_detail_id')->references('id')->on('doctor_details');
             $table->tinyinteger('status')->default(1);

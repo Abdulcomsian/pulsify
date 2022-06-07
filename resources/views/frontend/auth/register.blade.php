@@ -9,7 +9,7 @@
             <div class="formDiv">
                 <h4 class="text-center">Sign Up</h4>
                 <p class="text-center">Enter your email and password for signing in. </p>
-                <p class="text-center">Already have an account? <a href="/signin">Sign In</a></p>
+                <p class="text-center">Already have an account? <a href="{{ route('login') }}">Sign In</a></p>
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
                 <form action="{{ route('register') }}" method="post">
                     @csrf
