@@ -6,7 +6,7 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="/">
-            <img alt="Logo" src="{{asset('backend/assets/media/logos/logo.png')}}" class="logo"/>
+            <img alt="Logo" src="{{asset('img/logo.png')}}" class="logo"/>
         </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->
@@ -47,7 +47,11 @@
                 class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true">
                 <div class="menu-item">
-                    <a class="menu-link active" href="/">
+                    @if(Route::is('admin.dashboard') )
+                    <a class="menu-link active" href="{{ url('admin/dashboard') }}">
+                    @else
+                    <a class="menu-link" href="{{ url('admin/dashboard') }}">
+                    @endif
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -67,7 +71,11 @@
                     </a>
                 </div>
                 <div class="menu-item">
+                    @if(Route::is('doctors.index') )
+                    <a class="menu-link active" href="{{ url('/admin/doctors') }}">
+                    @else
                     <a class="menu-link" href="{{url('admin/doctors')}}">
+                    @endif
 										<span class="menu-icon">
 											<span class="svg-icon svg-icon-2">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
@@ -82,7 +90,11 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="{{url('admin/spiciality')}}">
+                    @if(Route::is('spiciality.index') )
+                    <a class="menu-link active" href="{{ url('/admin/spiciality') }}">
+                    @else
+                    <a class="menu-link" href="{{url('/admin/spiciality')}}">
+                    @endif
                                         <span class="menu-icon">
                                             <span class="svg-icon svg-icon-2">
                                                 <svg xmlns="https://www.flaticon.com/free-icon/doctor_3952988" width="24px" height="24px"
@@ -97,7 +109,11 @@
                     </a>
                 </div>
                 <div class="menu-item">
+                    @if(Route::is('hospitals.index') )
+                    <a class="menu-link active" href="{{ url('admin/hospitals') }}">
+                    @else
                     <a class="menu-link" href="{{url('admin/hospitals')}}">
+                    @endif
                                         <span class="menu-icon">
                                             <span class="svg-icon svg-icon-2">
                                                 <svg xmlns="https://www.flaticon.com/free-icon/doctor_3952988" width="24px" height="24px"

@@ -49,9 +49,7 @@ Route::get('contact-save', [ContactUsController::class, 'store'])->name('contact
 //Admin Routes here
 
 Route::group(['middleware' => ['auth', 'admin'],'prefix' => 'admin'], function () {
-  Route::get('dashboard', function () {
-    return view('backend.dashboard');
-  });
+  Route::get('dashboard', [DoctorController::class, 'dashboard'])->name('admin.dashboard');
 
   Route::resources([
     'doctors' => DoctorController::class,
