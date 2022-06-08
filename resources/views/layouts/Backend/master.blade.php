@@ -31,6 +31,7 @@ License: For each use you must have a valid license purchased only from above li
     <link href="{{asset('backend/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('backend/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('backend/assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!--end::Global Stylesheets Bundle-->
      @toastr_css
     {{-- Page Specific Styles        --}}
@@ -83,6 +84,7 @@ License: For each use you must have a valid license purchased only from above li
 <!--end::Main-->
 <!--begin::Javascript-->
 <!--begin::Global Javascript Bundle(used by all pages)-->
+@jquery
 <script src="{{asset('backend/assets/plugins/global/plugins.bundle.js')}}"></script>
 <script src="{{asset('backend/assets/js/scripts.bundle.js')}}"></script>
 <!--end::Global Javascript Bundle-->
@@ -91,6 +93,7 @@ License: For each use you must have a valid license purchased only from above li
 <script src="{{asset('backend/assets/js/custom/apps/chat/chat.js')}}"></script>
 <script src="{{asset('backend/assets/js/custom/modals/create-app.js')}}"></script>
 <script src="{{asset('backend/assets/js/custom/modals/upgrade-plan.js')}}"></script>
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <!--end::Page Custom Javascript-->
 @toastr_js
 @toastr_render

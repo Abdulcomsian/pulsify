@@ -32,8 +32,7 @@
                 </ul>
                 <div class="authBtnDiv">
                     <div class="languageTranlate">
-                        <p>العربية <span class="translateBtn"><img src="{{asset('img/translateLanguage.png')}}" alt=""
-                                    class="img-fluid"></span></p>
+                        <p>العربية <span class="translateBtn"><img src="{{asset('img/translateLanguage.png')}}" alt=""class="img-fluid"></span></p>
                     </div>
                     <a href="{{url('register')}}" class="login__Register-Btn">Login / Register</a>
                     <a href="" class="apply__Doctor-Btn">Apply as Doctor</a>

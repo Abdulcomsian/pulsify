@@ -22,7 +22,8 @@ class DoctorController extends Controller
         $Specialty = Specialty::get();
         $hospitals = Hospital::get();
         $doctors= DoctorDetail::with('country','sepcial')->get();
-        return view('backend.index', compact('countries', 'Specialty','doctors','hospitals'));
+        $cities = json_decode(file_get_contents(storage_path() . "/city.json"), true);
+        return view('backend.index', compact('countries', 'Specialty','doctors','hospitals','cities'));
     }
 
     public function dashboard()

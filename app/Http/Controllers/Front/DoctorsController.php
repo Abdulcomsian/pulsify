@@ -16,15 +16,18 @@ class DoctorsController extends Controller
     }
     //search doctors
     public function search(Request $request){
-         try {
-            $country=explode('-',$request->location);
+         // try {
+            //$country=explode('-',$request->location);
+            $city=$request->location;
+            $country=$city;
             $speciality=explode('-',$request->speciality);
             $serach_doctors = DoctorDetail::with('country','sepcial','drating')->when($request->name, function ($query) use ($request) {
                     return $query->where('full_name', 'LIKE', "%{$request->name}%");
                 })
-                ->when($request->location, function ($query) use ($request, $country) {
+                ->when($request->location, function ($query) use ($request, $city) {
                         
-                        return $query->where('country_id', '=', $country[1]);
+                       // return $query->where('city_id', '=', $country[1]);
+                    return $query->where('city', 'LIKE', "%{$city}%");
                 })
                 ->when($request->speciality, function ($query) use ($request,$speciality) {
                        
@@ -45,11 +48,12 @@ class DoctorsController extends Controller
                 $specialities=Specialty::where('is_featured',1)->limit(5)->get();
                 $countries =Country::get();
                 $hospitals =Hospital::get();
-                        return view('frontend.doctor.search-result',compact('serach_doctors','country','speciality','specialities','countries','hospitals'));
-             } catch (\Exception $exception) {
-                toastr()->error('Something went wrong, try again');
-                 return back();
-             }
+                 $cities = json_decode(file_get_contents(storage_path() . "/city.json"), true);
+                        return view('frontend.doctor.search-result',compact('serach_doctors','country','speciality','specialities','countries','hospitals','cities'));
+             // } catch (\Exception $exception) {
+             //    toastr()->error('Something went wrong, try again');
+             //     return back();
+             // }
         return view('frontend.doctor.search-result');
     }
 

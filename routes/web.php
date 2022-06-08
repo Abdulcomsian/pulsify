@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\DoctorsController;
 use App\Http\Controllers\Front\ContactUsController;
 use App\Http\Controllers\Admin\HospitalController;
+use App\Http\Controllers\Admin\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,19 +28,13 @@ use App\Http\Controllers\Admin\HospitalController;
 Route::get('/hospital-feedback', function () {
   return view('frontend.doctor.hospital-feed-back');
 });
-
-
 //search doctors
 Route::get('/search', [DoctorsController::class, 'search'])->name('search.doctors');
 Route::get('/doctor-feedback/{id}', [DoctorsController::class, 'doctor_feedback'])->name('doctors.feedback');
-
-
 //contact us rutes
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
 Route::get('contact-save', [ContactUsController::class, 'store'])->name('contact-us.store');
-
-
-  Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 
 
@@ -55,6 +50,7 @@ Route::group(['middleware' => ['auth', 'admin'],'prefix' => 'admin'], function (
     'doctors' => DoctorController::class,
     'spiciality' => SpecialtyController::class, //Specialty
     'hospitals' => HospitalController::class, //hospitals
+    'blogs' => BlogController::class,//blogs
   ]);
 });
 

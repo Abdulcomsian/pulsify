@@ -1,6 +1,11 @@
 @extends('layouts.Backend.master')
 @section('css')
 @include('layouts.sweetalert.sweetalert_css')
+<style type="text/css">
+    .select2-container .select2-selection--single{
+        height: 40px;
+    }
+</style>
 @endsection
 @section('content')
 <!--begin::Content-->
@@ -59,7 +64,7 @@
                         </div>
                         
                         <!--begin::Modal - Add Doctor-->
-                        <div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">
+                        <div class="modal fade" id="kt_modal_add_user" aria-hidden="true">
                             <!--begin::Modal dialog-->
                             <div class="modal-dialog modal-dialog-centered mw-650px">
                                 <!--begin::Modal content-->
@@ -109,6 +114,14 @@
                                                 </div>
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Phone</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="phone" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Phone" required />
+                                                    <!--end::Input-->
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
                                                     <label class="required fw-bold fs-6 mb-2">Title</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
@@ -117,13 +130,13 @@
                                                 </div>
 
                                                 <!--begin::Input group-->
-                                                <div class="fv-row mb-7">
+                                                <div class="fv-row mb-7 d-none">
                                                     <!--begin::Label-->
                                                     <label class="required fw-bold fs-6 mb-2">Country</label>
-                                                    <select name="country_id" class="form-control form-control-solid mb-3 mb-lg-0" required>
+                                                    <select name="country_id" class="form-control form-control-solid mb-3 mb-lg-0 " required>
                                                         <option value="">Select Country</option>
                                                         @foreach($countries as $contry)
-                                                        <option value="{{$contry->id}}">{{$contry->country_name}}</option>
+                                                        <option value="{{$contry->id}}"@if($contry->id=='191'){{'selected'}}@endif>{{$contry->country_name}}</option>
                                                         @endforeach
                                                     </select>
 
@@ -135,7 +148,14 @@
                                                     <label class="required fw-bold fs-6 mb-2">City</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="text" name="city" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter City" required />
+                                                    <select name="city" class="js-example-basic-single form-control form-control-solid mb-3 mb-lg-0 selectpicker" id="select-country" data-live-search="true" required>
+                                                    <option value="">Select City</option>
+                                                    @foreach($cities as $ct)
+                                                    <option value="{{$ct['name_en']}}" data-tokens="{{$ct['name_en']}}">{{$ct['name_en']}}</option>
+                                                    @endforeach
+                                                    </select>
+                                                   
+                                                    <!-- <input type="text" name="city" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter City" required /> -->
                                                     <!--end::Input-->
                                                 </div>
                                                 <div class="fv-row mb-7">
@@ -160,6 +180,12 @@
 
                                                     <!--end::Input-->
                                                 </div>
+                                                 <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Years of experience</label>
+                                                     <input type="number" min="0" max="40" name="experience" class="form-control form-control-solid mb-3 mb-lg-0" required />
+                                                </div>
+                                               
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
                                                     <label class="fw-bold fs-6 mb-2">Hospital</label>
@@ -279,6 +305,14 @@
                                                 </div>
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Phone</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="phone" id="editphone" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Phone" required />
+                                                    <!--end::Input-->
+                                                </div>
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
                                                     <label class="required fw-bold fs-6 mb-2">Title</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
@@ -329,6 +363,11 @@
                                                     </select>
 
                                                     <!--end::Input-->
+                                                </div>
+                                                 <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Years of experience</label>
+                                                     <input type="number" min="0" max="40" name="experience" id="editexp" class="form-control form-control-solid mb-3 mb-lg-0" required />
                                                 </div>
                                                 <div class="fv-row mb-7">
                                                     <!--begin::Label-->
@@ -444,7 +483,7 @@
                                 <td><img src="{{asset($doc->image)}}" width="60px" height="60px" /></td>
                                 <td class="text-end">
 
-                                    <a href="#" onclick="edit_hospital(@php 'json_encode($doc)' @endphp)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <a href="#" onclick="edit_hospital('{{json_encode($doc)}}')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                         <span class="svg-icon svg-icon-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953)" />
@@ -479,16 +518,24 @@
 @section('script')
 @include('layouts.sweetalert.sweetalert_js')
 <script type="text/javascript">
-    function edit_hospital($data){
-         var data=JSON.parse($data);
+    // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+</script>
+<script type="text/javascript">
+    function edit_hospital(data){
+         var data=JSON.parse(data);
          $("#kt_modal_edit_user_form").attr('action', 'doctors/' + data.id);
          $("#edit_name").val(data.full_name);
          $("#edit_email").val(data.email);
+         $("#editphone").val(data.phone);
          $("#edit_title").val(data.title);
          $("#edit_country_id").val(data.country_id);
          $("#edit_city").val(data.city);
          $("#edit_full_address").val(data.address);
          $("#edit_specialtie_id").val(data.specialtie_id);
+         $("#editexp").val(data.experience);
          $("#edit_hospital_id").val(data.hospital_id);
          if(data.gender == 'male')
          {

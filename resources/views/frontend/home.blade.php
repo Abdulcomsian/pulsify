@@ -40,11 +40,19 @@
                                         <div class="inputDiv">
                                             <input type="text" name="name" id="" placeholder="Enter name of Doctor">
                                         </div>
-                                        <div class="inputDiv">
+                                        {{-- <div class="inputDiv">
                                             <select name="location" id="" required>
                                                 <option value="">Location</option>
-                                                @foreach($countries as $country)
+                                                @foreach($cities as $country)
                                                 <option value="{{$country->country_name.'-'.$country->id}}">{{$country->country_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div> --}}
+                                        <div class="inputDiv">
+                                            <select  name="location" id="" required>
+                                                <option value="">Location</option>
+                                                @foreach($cities as $ct)
+                                                <option value="{{$ct['name_en']}}">{{$ct['name_en']}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -70,9 +78,11 @@
                                     </div>
                                 </form>
                             </div>
-                            <!-- <div id="menu1" class="tab-pane fade">
-                                <p>Coming Soon !</p>
-                            </div> -->
+                            <div id="menu1" class="tab-pane fade">
+                                 <div class="findDoctorBox" style="height: 107px">
+                                    <p>Comming Soon!</p>   
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -387,19 +397,21 @@
                 </div>
                 <div class="multiNews">
                     <div class="row">
+                        @foreach($blogs as $bl)
                         <div class="col-lg-4">
                             <div class="newsDiv">
                                 <div class="imgDiv">
-                                    <img src="{{asset('img/news1.png')}}" alt="" class="img-fluid">
+                                    <img src="{{asset($bl->image)}}" alt="" style="height:375px !important" class="img-fluid">
                                 </div>
                                 <div class="newsContent">
-                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i> January 1, 2022</span>
-                                    <h5>High Quality Treatment For Kids.</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
+                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i> {{date("F,d,Y", strtotime($bl->created_at))}}</span>
+                                    <h5>{{$bl->title}}</h5>
+                                    <p style="height: 40px;">{{$bl->description}}</p>
                                     <a href="">Read more <span><i class="fa fa-angle-right"></i></span></a>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <div class="col-lg-4">
                             <div class="newsDiv">
                                 <div class="imgDiv">
@@ -432,5 +444,13 @@
         </div>
     </main>
 
+    @endsection
+    @section('script')
+    <script type="text/javascript">
+    // In your Javascript (external .js resource or <script> tag)
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+</script>
     @endsection
 

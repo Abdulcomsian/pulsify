@@ -17,6 +17,7 @@ class CreateDoctorDetailsTable extends Migration
             $table->id();
             $table->string('full_name')->nullable();
             $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->string('title')->nullable();
             $table->longtext('description')->nullable();
             $table->unsignedBigInteger('country_id')->nullable();
@@ -26,6 +27,7 @@ class CreateDoctorDetailsTable extends Migration
             $table->string('image')->nullable();
             $table->unsignedBigInteger('specialtie_id')->nullable();
             $table->foreign('specialtie_id')->references('id')->on('specialties');
+            $table->integer('experience')->nullable();
             $table->integer('hospital_id')->nullable();
             $table->string('gender')->nullable();
             $table->string('lat')->nullable();
