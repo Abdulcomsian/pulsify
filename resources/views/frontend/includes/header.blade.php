@@ -19,7 +19,7 @@
                             Top Rated
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Doctors</a>
+                            <a class="dropdown-item" href="{{url('Top-Rated-Doctos')}}">Doctors</a>
                             <a class="dropdown-item" href="#">Hospitals</a>
                         </div>
                     </li>

@@ -62,9 +62,9 @@
   ]
     });
     $(".pills-div li").click(function(){
+        $("#reviews").css("height",'auto');
       $(".pills-div li").removeClass("active");
       $(this).addClass("active")
-      $('.top-reveiw-slider').slick('refresh');
     })
     $(".apply__Doctor-Btn").mouseenter(function() {
       $(this).text("Comming Soon");

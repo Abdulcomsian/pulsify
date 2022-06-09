@@ -80,7 +80,7 @@
                             </div>
                             <div id="menu1" class="tab-pane fade">
                                  <div class="findDoctorBox" style="height: 107px">
-                                    <p>Comming Soon!</p>   
+                                    <p>Coming Soon!</p>   
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                                     <div class="doctorSpecialities">
                                         <p>{{$doc->sepcial->name}}</p>
                                         <p>{{$doc->country->country_name}}, {{$doc->city}}</p>
-                                        <p class="rating"><i class="fa fa-star"></i>{{HelperFunctions::avg($doc->id)}} <span>{{count($doc->drating)}} reviews</span></p>
+                                        <p class="rating" style="float:none"><i class="fa fa-star"></i>{{(int)HelperFunctions::avg($doc->id)}} <span>{{count($doc->drating)}} reviews</span></p>
                                     </div>
                                     <div class="doctorDetail">
                                         <p>{{ \Illuminate\Support\Str::limit($doc->description, 120, '...') }}</p>
@@ -180,7 +180,7 @@
                                     <div class="doctorSpecialities">
                                         <p>Orthopaedic Surgery</p>
                                         <p>New York, NY</p>
-                                        <p class="rating"><i class="fa fa-star"></i>4.54<span>37 reviews</span></p>
+                                        <p class="rating" style="float:none"><i class="fa fa-star"></i>4.54<span>37 reviews</span></p>
                                     </div>
                                     <div class="doctorDetail">
                                         <p>Very personable and good listener. Makes you feel comfortable and open immediately. Felt well taken care...</p>
@@ -332,7 +332,39 @@
                     </div>
                 </div>
                 <div class="patientsSlider">
-                    <div class="patientsBox">
+                    @if(count($reviews)>0)
+                     @foreach($reviews as $drat)
+                        <div class="patientsBox">
+                            <div class="quoteImg">
+                                <img src="{{asset('img/quote-right.png')}}" alt="" class="img-fluid">
+                            </div>
+                            <p>{{$drat->review}}.</p>
+                            <div class="profileDiv">
+                                <img src="{{asset($drat->user->image)}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
+                                <div class="profileDetail">
+                                    <h4>{{$drat->user->name}}</h4>
+                                    <span>Patient</span>
+                                </div>
+                            </div>
+                         </div>
+                     @endforeach
+                    @else
+                        <div class="patientsBox">
+                            <div class="quoteImg">
+                                <img src="{{asset('img/quote-right.png')}}" alt="" class="img-fluid">
+                            </div>
+                            <p>No review</p>
+                            <div class="profileDiv">
+                                <img src="{{asset('img/doctor1.png')}}" alt="" class="img-fluid">
+                                <div class="profileDetail">
+                                    <h4>ABC</h4>
+                                    <span>Patient</span>
+                                </div>
+                            </div>
+                         </div>
+                    @endif
+                     
+                    <!--<div class="patientsBox">
                         <div class="quoteImg">
                             <img src="{{asset('img/quote-right.png')}}" alt="" class="img-fluid">
                         </div>
@@ -370,20 +402,7 @@
                                 <span>Patient</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="patientsBox">
-                        <div class="quoteImg">
-                            <img src="{{asset('img/quote-right.png')}}" alt="" class="img-fluid">
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.  tincidunt et scelerisque etiam. Blandit hendrerit id nec elementum ligula et.</p>
-                        <div class="profileDiv">
-                            <img src="{{asset('img/doctor1.png')}}" alt="" class="img-fluid">
-                            <div class="profileDetail">
-                                <h4>David Mark</h4>
-                                <span>Patient</span>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

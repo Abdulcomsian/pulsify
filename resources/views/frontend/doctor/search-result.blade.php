@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <p class="numberOfDoctor"><b>{{count($serach_doctors)}}</b> matches found for :  {{$speciality[0] ?? ''}} In {{$country[0] ?? ''}}</p>
+                    <p class="numberOfDoctor"><b>{{count($serach_doctors)}}</b> matches found for :  {{$speciality[0] ?? ''}} In {{$country ?? ''}}</p>
                 </div>
                 <div class="col-lg-6">
                     <div class="sortingDiv">
@@ -46,10 +46,11 @@
                                     <label for="">Location:</label>
                                     <select name="location" id="" required>
                                        <option value="">Location</option>
-                                       @foreach($countries as $country)
-                                        <option value="{{$country->country_name.'-'.$country->id}}">{{$country->country_name}}</option>
-                                        @endforeach
+                                         @foreach($cities as $ct)
+                                            <option value="{{$ct['name_en']}}">{{$ct['name_en']}}</option>
+                                         @endforeach
                                     </select>
+                                   
                                 </div>
                                 <div class="inputDiv">
                                     <label for="">Health Insurance:</label>

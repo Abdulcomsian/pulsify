@@ -30,14 +30,18 @@ Route::get('/hospital-feedback', function () {
 });
 //search doctors
 Route::get('/search', [DoctorsController::class, 'search'])->name('search.doctors');
+Route::get('Top-Rated-Doctos',[DoctorsController::class, 'top_doctors'])->name('top.doctors');
 Route::get('/doctor-feedback/{id}', [DoctorsController::class, 'doctor_feedback'])->name('doctors.feedback');
+
 //contact us rutes
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
 Route::get('contact-save', [ContactUsController::class, 'store'])->name('contact-us.store');
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-
-
+//AUTH MIDDLEWARE
+Route::group(['middleware' => ['auth']], function () {
+ Route::post('/patient-feedback-save',[DoctorsController::class, 'patient_feedback_save'])->name('patient.feedback-save');
+});
 
 
 

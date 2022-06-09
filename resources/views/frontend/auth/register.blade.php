@@ -11,7 +11,7 @@
                 <p class="text-center">Enter your email and password for signing in. </p>
                 <p class="text-center">Already have an account? <a href="{{ route('login') }}">Sign In</a></p>
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                <form action="{{ route('register') }}" method="post">
+                <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="inputDiv">
                         <x-label for="name" :value="__('Name')" />
@@ -20,6 +20,10 @@
                     <div class="inputDiv">
                         <x-label for="email" :value="__('Email')" />
                         <input type="email" placeholder="Enter Your Email"  name="email" value="{{old('email')}}" required>
+                    </div>
+                    <div class="inputDiv">
+                        <x-label for="image" :value="__('Image')" />
+                        <input type="file" placeholder="Enter Your Email"  name="image" value="{{old('image')}}" required>
                     </div>
                     <div class="inputDiv">
                         <x-label for="password" :value="__('Password')" />

@@ -22,6 +22,7 @@ class DoctorDetail extends Model
     public function drating()
     {
         return $this->hasMany(DoctorReview::class)->orderBy('id','desc');
+        
     }
     
 }

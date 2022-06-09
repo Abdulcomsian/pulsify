@@ -24,6 +24,8 @@ class CreateDoctorReviewsTable extends Migration
             $table->string('treatment_rating')->nullable();
             $table->unsignedBigInteger('doctor_detail_id')->nullable();
             $table->foreign('doctor_detail_id')->references('id')->on('doctor_details');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->tinyinteger('status')->default(1);
             $table->timestamps();
         });
