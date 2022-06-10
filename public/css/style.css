@@ -1211,7 +1211,79 @@ footer .footer-widgets ul li a{
   cursor:pointer;
   color:yellow;
 } 
-
+/*********** Blog - Details - CSS *************/
+.blog_detail .blog_img{
+    margin: 60px 0px 20px;
+}
+.blog_detail .blog_img img{
+    width: 100%;
+    height: 500px;
+}
+.blog_detail .date_time_author{
+    margin-bottom: 20px;
+    color: #65677B;
+    font-size: 14px;
+    font-weight: 400;
+}
+.blog_detail .blog_content .blog_title{
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.blog_detail .blog_content .blog_description{
+    color: #65677B;
+    font-size: 18px;
+    font-weight: 400;
+}
+.blog_detail .leatestNew .multiNews{
+    max-width: 100%;
+}
+.search_div{
+    margin: 60px 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 25%);
+    border-radius: 6px;
+    padding: 20px;
+}
+.search_div h4,
+.social_div h4{
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.search_div .formDiv button{
+    background-color: var(--commonColor);
+    color: var(--whiteColor);
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+}
+.social_div ul{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.social_div ul li{
+    margin-right: 20px;
+}
+.social_div ul li a{
+    font-size: 30px;
+}
+.social_div .fa-instagram{
+    background: -webkit-linear-gradient(#ffbd28, #ff8534, #ff1f7a, #c838f6, #334fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.social_div .fa-facebook{
+    color: #395185;
+}
+.social_div .fa-whatsapp{
+    color: #00e676;
+}
+.social_div .fa-twitter{
+    color: #55acee;
+}
 /*********** Media - Query - CSS **************/
 @media screen and (max-width: 1300px) {
     .getInTouch .contactDetail .commonContactBox{
@@ -1332,6 +1404,9 @@ footer .footer-widgets ul li a{
     }
 }
 @media screen and (max-width: 992px) {
+    .blog_detail .row{
+        flex-direction: column-reverse;
+    }
     .doctor-feedBack .multi-review .patientBox{
         display: block;
     }
@@ -1415,8 +1490,14 @@ footer .footer-widgets ul li a{
     .mainHeroSection .bannerRightDiv {
         padding: 0px;
     }
+    .blog_detail .blog_img img{
+        height: 250px;
+    }
 }
 @media screen and (max-width: 768px) {
+    .blog_detail{
+        padding: 0px 20px;
+    }
     .medicalExpert .medicalRightDiv h3 {
         font-size: 24px;
         line-height: 35px;

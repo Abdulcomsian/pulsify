@@ -24,7 +24,9 @@ use App\Http\Controllers\Admin\BlogController;
 
 
 
-
+Route::get('/blog-detail', function () {
+  return view('frontend.blog-detail');
+});
 Route::get('/hospital-feedback', function () {
   return view('frontend.doctor.hospital-feed-back');
 });
