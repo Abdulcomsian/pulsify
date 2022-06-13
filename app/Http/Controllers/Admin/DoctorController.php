@@ -9,6 +9,8 @@ use App\Models\DoctorDetail;
 use App\Models\DoctorReview;
 use App\Models\HospitalRating;
 use App\Models\Hospital;
+use App\Models\DoctorsHasEducation;
+use App\Models\DoctorsHasExperience;
 use Illuminate\Support\Facades\Validator;
 use App\Utils\HelperFunctions;
 use Illuminate\Support\Facades\Redirect;
@@ -68,7 +70,15 @@ class DoctorController extends Controller
     }
     public function show($id)
     {
-        //
+        $doctor_detail = DoctorDetail::where('id',$id)->first();
+        $doctor_educations = DoctorsHasEducation::where('doctor_detail_id',$id)->get();
+        $doctor_experiences = DoctorsHasExperience::where('doctor_detail_id',$id)->get();
+        return view('backend.show', compact('doctor_detail','doctor_educations','doctor_experiences'));
+    }
+
+    public function store_education(Request $request)
+    {
+        # code...
     }
     public function edit($id)
     {

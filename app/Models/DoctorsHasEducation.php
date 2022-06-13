@@ -5,19 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Hospital extends Model
+class DoctorsHasEducation extends Model
 {
     use HasFactory;
+    protected $table = 'doctors_has_educations';
     protected $guarded = [];
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
-    }
-
-    //doctor_detail relation
+    
+    //doctordetail relation
     public function doctor_detail()
     {
-        return $this->hasMany(DoctorDetail::class);
+        return $this->belongsTo(DoctorDetail::class);
     }
+
 }

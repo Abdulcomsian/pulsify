@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['auth', 'admin'],'prefix' => 'admin'], function () {
   Route::get('dashboard', [DoctorController::class, 'dashboard'])->name('admin.dashboard');
+  Route::post('store_education', [DoctorController::class, 'store_education'])->name('doctor_detail.store-education');
 
   Route::resources([
     'doctors' => DoctorController::class,
