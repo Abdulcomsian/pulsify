@@ -10,5 +10,11 @@ class DoctorsHasEducation extends Model
     use HasFactory;
     protected $table = 'doctors_has_educations';
     protected $guarded = [];
+    
+    //doctordetail relation
+    public function doctor_detail()
+    {
+        return $this->belongsTo(DoctorDetail::class);
+    }
 
 }

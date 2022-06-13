@@ -482,6 +482,9 @@
                                 <td>{{$doc->sepcial->name}}</td>
                                 <td><img src="{{asset($doc->image)}}" width="60px" height="60px" /></td>
                                 <td class="text-end">
+                                    <a href="{{route('doctors.show',$doc->id)}}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit">
+                                        <i class="la la-eye"></i>
+                                    
 
                                     <a href="#" onclick="edit_hospital('{{json_encode($doc)}}')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                         <span class="svg-icon svg-icon-3">

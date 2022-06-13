@@ -14,4 +14,10 @@ class Hospital extends Model
     {
         return $this->belongsTo(Country::class);
     }
+
+    //doctor_detail relation
+    public function doctor_detail()
+    {
+        return $this->hasMany(DoctorDetail::class);
+    }
 }

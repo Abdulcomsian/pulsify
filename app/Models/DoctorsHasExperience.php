@@ -11,4 +11,8 @@ class DoctorsHasExperience extends Model
 
     protected $guarded = [];
 
+    public function doctor_detail()
+    {
+        return $this->belongsTo(DoctorDetail::class);
+    }
 }

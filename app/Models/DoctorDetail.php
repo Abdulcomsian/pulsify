@@ -18,11 +18,26 @@ class DoctorDetail extends Model
     public function sepcial(){
         return $this->belongsTo(Specialty::class,'specialtie_id','id');
     }
+    //hospital relation
+    public function hospital(){
+        return $this->belongsTo(Hospital::class);
+    }
     //rating relation with doctor
     public function drating()
     {
         return $this->hasMany(DoctorReview::class)->orderBy('id','desc');
         
+    }
+    //doctor has education
+    public function education()
+    {
+        return $this->hasMany(DoctorsHasEducation::class);
+    }
+
+    //doctor has experience
+    public function experience()
+    {
+        return $this->hasMany(DoctorsHasExperience::class);
     }
     
 }
