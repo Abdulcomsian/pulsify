@@ -86,45 +86,40 @@
                                         <h3>Education</h3>
                                         <div class="commonList">
                                             <ul>
+                                                @if($doctor_educations)
+                                                @foreach($doctor_educations as $doctor_education)
                                                 <li>
-                                                    <p>American Dental Medical University</p>
-                                                    <span>BDS</span>
-                                                    <span>1998 - 2003</span>
+                                                    <p>{{$doctor_education->college_name}}</p>
+                                                    <span>{{$doctor_education->degree}}</span>
+                                                    <span>{{date('Y', strtotime($doctor_education->from_year))}} - {{date('Y', strtotime($doctor_education->to_year))}}</span>
                                                 </li>
-                                                <li>
-                                                    <p>American Dental Medical University</p>
-                                                    <span>MDS</span>
-                                                    <span>2003 - 2005</span>
-                                                </li>
+                                                @endforeach
+                                                @endif
                                             </ul>
+                                            
                                         </div>
                                         <h3>Work & Experience</h3>
                                         <div class="commonList workExperience">
                                             <ul> 
+                                                @if($doctor_experiences)
+                                                @foreach($doctor_experiences as $doctor_experience)
                                                 <li>
-                                                    <p>Glowing Smiles Family Dental Clinic</p>
-                                                    <span>2010 - Present (5 years)</span>
+                                                    <p>{{$doctor_experience->company_name}}</p>
+                                                    <span>{{$doctor_experience->designation}}</span>
+                                                    <span>{{date('Y', strtotime($doctor_experience->from_year))}} - {{date('Y', strtotime($doctor_experience->to_year))}}</span>
                                                 </li>
-                                                <li>
-                                                    <p>Comfort Care Dental Clinic</p>
-                                                    <span>2007 - 2010 (3 years)</span>
-                                                </li>
-                                                <li>
-                                                    <p>Dream Smile Dental Practice</p>
-                                                    <span>2005 - 2007 (2 years)</span>
-                                                </li>
+                                                @endforeach
+                                                @endif
                                             </ul>
                                         </div>
                                         <h3>Services:</h3>
                                         <div class="common-multi-li-div">
                                             <ul>
-                                                <li>Ultherapy</li>
-                                                <li>Q Switch Laser</li>
-                                                <li>Carbon Facial</li>
-                                                <li>Laser Treatment</li>
-                                                <li>Burn Surgery</li>
-                                                <li>Removal of Moles & Warts</li>
-                                                <li>Double Chin Treatment</li>
+                                                @if($doctors_feedback->services)
+                                                @foreach(explode(',', $doctors_feedback->services) as $info) 
+                                                    <li>{{$info}}</li>
+                                                @endforeach 
+                                                @endif
                                             </ul>
                                         </div>
                                         <h3>Specialization:</h3>

@@ -78,8 +78,83 @@ class DoctorController extends Controller
 
     public function store_education(Request $request)
     {
-        # code...
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'addmore.*.college_name' => 'required',
+            'addmore.*.degree' => 'required',
+            'addmore.*.from_year' => 'required',
+            'addmore.*.to_year' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+         //insert doctor code here
+        foreach ($request->addmore as $key => $value) {
+            DoctorsHasEducation::create($value);
+        }
+        toastSuccess('Doctor successfully updated!');
+        return Redirect::back();
     }
+
+    //delete education
+    public function delete_education($id)
+    {
+        $education = DoctorsHasEducation::where('id',$id)->first();
+        $education->delete();
+        toastSuccess('Education successfully deleted!');
+        return Redirect::back();
+    }
+
+    public function store_experience(Request $request)
+    {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'addmore.*.company_name' => 'required',
+            'addmore.*.designation' => 'required',
+            'addmore.*.from_year' => 'required',
+            'addmore.*.to_year' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+         //insert doctor code here
+        
+            
+            foreach ($request->addmore as $key => $value) {
+                DoctorsHasExperience::create($value);
+            }
+            toastSuccess('Doctor successfully updated!');
+            return Redirect::back();
+          
+    }
+
+    //delete experience
+    public function delete_experience($id)
+    {
+        $experience = DoctorsHasExperience::where('id',$id)->first();
+        $experience->delete();
+        toastSuccess('Experience successfully deleted!');
+        return Redirect::back();
+    }
+
+    public function store_service(Request $request)
+    {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'services' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+         //insert doctor code here
+        DoctorDetail::where('id',$request->doctor_detail_id)->update(['services'=>$request->services]);
+        toastSuccess('Doctor successfully updated!');
+        return Redirect::back();
+    }
+
     public function edit($id)
     {
         //

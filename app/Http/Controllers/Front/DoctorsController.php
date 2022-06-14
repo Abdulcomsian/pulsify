@@ -9,6 +9,8 @@ use App\Models\Specialty;
 use App\Models\Country;
 use App\Models\Hospital;
 use App\Models\DoctorReview;
+use App\Models\DoctorsHasEducation;
+use App\Models\DoctorsHasExperience;
 use DB;
 
 class DoctorsController extends Controller
@@ -69,15 +71,18 @@ class DoctorsController extends Controller
                 ->orderBy('avgrate', 'Desc')
                 ->limit(10)
                 ->get();
-        dd($topdoctors);
+         return view('frontend.doctor.doctor-rating',compact('topdoctors'));
     }
 
     //feedback
     public function doctor_feedback($id)
     {
-       $doctorid= \Crypt::decrypt($id);
-       $doctors_feedback = DoctorDetail::with('country','sepcial','drating')->with('drating.user')->find($doctorid);
-       return view('frontend.doctor.doctor-feed-back',compact('doctors_feedback')); 
+      $doctorid= \Crypt::decrypt($id);
+      $doctors_feedback = DoctorDetail::with('country','sepcial','drating')->with('drating.user')->find($doctorid);
+
+      $doctor_educations = DoctorsHasEducation::where('doctor_detail_id',$doctorid)->get();
+      $doctor_experiences = DoctorsHasExperience::where('doctor_detail_id',$doctorid)->get();
+      return view('frontend.doctor.doctor-feed-back',compact('doctors_feedback','doctor_educations','doctor_experiences')); 
     }
     //save feedback
     public function patient_feedback_save(Request $request)

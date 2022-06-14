@@ -50,6 +50,10 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth', 'admin'],'prefix' => 'admin'], function () {
   Route::get('dashboard', [DoctorController::class, 'dashboard'])->name('admin.dashboard');
   Route::post('store_education', [DoctorController::class, 'store_education'])->name('doctor_detail.store-education');
+  Route::post('store_experience', [DoctorController::class, 'store_experience'])->name('doctor_detail.store-experience');
+  Route::get('delete_education/{id}', [DoctorController::class, 'delete_education'])->name('doctor_detail.delete-education');
+  Route::get('delete_experience/{id}', [DoctorController::class, 'delete_experience'])->name('doctor_detail.delete-experience');
+  Route::post('store_service', [DoctorController::class, 'store_service'])->name('doctor_detail.store-service');
 
   Route::resources([
     'doctors' => DoctorController::class,
