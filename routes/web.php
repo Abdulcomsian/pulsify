@@ -31,6 +31,7 @@ Route::get('/hospital-feedback', function () {
 //search doctors
 Route::get('/search', [DoctorsController::class, 'search'])->name('search.doctors');
 Route::get('Top-Rated-Doctos',[DoctorsController::class, 'top_doctors'])->name('top.doctors');
+Route::get('Top-Rated-Hospitals',[DoctorsController::class, 'top_hospitals'])->name('top.hospitals');
 Route::get('/doctor-feedback/{id}', [DoctorsController::class, 'doctor_feedback'])->name('doctors.feedback');
 
 //contact us rutes

@@ -20,7 +20,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('Top-Rated-Doctos')}}">Doctors</a>
-                            <a class="dropdown-item" href="#">Hospitals</a>
+                            <a class="dropdown-item" href="{{url('Top-Rated-Hospitals')}}">Hospitals</a>
                         </div>
                     </li>
                     <li class="nav-item">

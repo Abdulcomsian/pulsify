@@ -71,8 +71,23 @@ class DoctorsController extends Controller
                 ->orderBy('avgrate', 'Desc')
                 ->limit(10)
                 ->get();
+               //dd($topdoctors);
          return view('frontend.doctor.doctor-rating',compact('topdoctors'));
     }
+
+    //top rate hospitals
+      public function top_hospitals()
+      {
+         $tophospitals = Hospital::with('country')
+                  ->select(['hospitals.*',DB::raw('avg(hospital_ratings.overall_rating) as avgrate')])
+                  ->join('hospital_ratings', 'hospital_ratings.hospital_id', '=', 'hospitals.id')
+                  ->groupBy('hospital_ratings.hospital_id')
+                  ->orderBy('avgrate', 'Desc')
+                  ->limit(10)
+                  ->get();
+         // dd($tophospitals);
+            return view('frontend.doctor.hospital-rating',compact('tophospitals'));
+      }
 
     //feedback
     public function doctor_feedback($id)
