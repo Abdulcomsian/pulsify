@@ -272,7 +272,7 @@
                                                 <div class="reviewBox">
                                                     <p>{{$drat->review}}</p>
                                                     <div class="infoDiv">
-                                                        <img src="{{asset($drat->user->image)}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
+                                                        <img src="{{asset('img/male_icon.jpg')}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
                                                         <div class="contentDiv">
                                                             <h4>{{$drat->user->name}}</h4>
                                                             <p>Patient</p>
