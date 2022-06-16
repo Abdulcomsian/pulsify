@@ -292,11 +292,13 @@
                 </div>
             </div>
         </div>
+        @if($tophospital>0)
         <div class="medicalExpert">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 text-center">
                         <div class="imgDiv">
+                            
                             <img src="{{asset($tophospital->image)}}" style="width: 647px; height:470px" alt="" class="img-fluid">
                             <div class="qualityOurQuantity">
                                 <img src="{{asset('img/quality.png')}}" alt="" class="img-fluid">
@@ -336,6 +338,7 @@
                                     </span>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -348,6 +351,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <div class="patientFeedBack">
             <div class="container-fluid">
                 <div class="row">
