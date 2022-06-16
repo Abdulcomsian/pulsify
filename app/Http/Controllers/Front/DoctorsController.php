@@ -78,8 +78,8 @@ class DoctorsController extends Controller
     //top rate hospitals
       public function top_hospitals()
       {
-         $tophospitals = Hospital::with('country')
-                  ->select(['hospitals.*',DB::raw('avg(hospital_ratings.overall_rating) as avgrate')])
+         $tophospitals = Hospital::with('country','h_rating')
+                  ->select(['hospitals.*',DB::raw('avg(hospital_ratings.overall_rating) as avgrate'),DB::raw('count(hospital_ratings.id) as count_rating')])
                   ->join('hospital_ratings', 'hospital_ratings.hospital_id', '=', 'hospitals.id')
                   ->groupBy('hospital_ratings.hospital_id')
                   ->orderBy('avgrate', 'Desc')

@@ -20,4 +20,10 @@ class Hospital extends Model
     {
         return $this->hasMany(DoctorDetail::class);
     }
+
+    //hospital_rating relation 
+    public function h_rating()
+    {
+        return $this->hasMany(HospitalRating::class);
+    }
 }

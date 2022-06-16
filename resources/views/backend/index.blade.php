@@ -5,6 +5,11 @@
     .select2-container .select2-selection--single{
         height: 40px;
     }
+    .pac-container.pac-logo
+    {
+        z-index: 99999999;
+        display: block;
+    }
 </style>
 @endsection
 @section('content')
@@ -100,6 +105,8 @@
                                                     <label class="required fw-bold fs-6 mb-2">Doctor Name</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
+                                                    <input type="hidden" name="lat" class="lat_pck" id="lat_pck" >
+                                                    <input type="hidden" name="long" class="long_pck" id="long_pck" >
                                                     <input type="text" name="full_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" required />
                                                     <!--end::Input-->
                                                 </div>
@@ -163,7 +170,7 @@
                                                     <label class="required fw-bold fs-6 mb-2">Full Address</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="text" name="address" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Full Address" required />
+                                                    <input type="text" name="address" id="address" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Enter Full Address" required />
                                                     <!--end::Input-->
                                                 </div>
                                                 <div class="fv-row mb-7">
@@ -520,6 +527,29 @@
 @endsection
 @section('script')
 @include('layouts.sweetalert.sweetalert_js')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeHpSgm-hy0_G_NC6PynKEYgASntQIi1Y&libraries=places&callback=initMap" async defer></script>
+<script>
+
+    function initMap() {
+      //google map auto complete for per hour form
+
+        var input_field = document.getElementById('address');
+        // geographical location types.
+        let autocomplete_location = new google.maps.places.Autocomplete(input_field);
+      
+        autocomplete_location.setFields(['geometry']);
+
+        google.maps.event.addListener(autocomplete_location, 'place_changed', function () {
+            var pick_address = autocomplete_location.getPlace();
+            latitude_pick = pick_address.geometry.location.lat();
+            longitude_pick = pick_address.geometry.location.lng();
+            // console.log(longitude_pick);
+            $('.lat_pck').val(latitude_pick);
+            $('.long_pck').val(longitude_pick);
+           
+        });
+    }
+</script>
 <script type="text/javascript">
     // In your Javascript (external .js resource or <script> tag)
 $(document).ready(function() {

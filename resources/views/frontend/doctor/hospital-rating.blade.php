@@ -43,14 +43,19 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                            <span>({{$hospital->drating}})</span>
+                                            <span>({{$hospital->count_rating}})</span>
                                         </div>
                                         <p class="location"><img src="{{asset('img/location-marker.png')}}" alt="" class="img-fluid">{{$hospital->country->country_name}}</p>
                                     </div>
                                 </div>
                                 <div class="leatestRating">
                                     <h4>Latest Rating:</h4>
-                                    
+                                    @if(count($hospital->h_rating)>0)
+                                        @php $nrecord=count($hospital->h_rating);@endphp
+                                        {{$hospital->h_rating[$nrecord-1]->review}}
+                                      @else
+                                        No Review
+                                      @endif
                                 </div>
                             </div>
                            
@@ -58,10 +63,10 @@
                                 <div class="feedBack">
                                     <ul class="feedBackList">
                                         <li><img src="{{asset('img/like.png')}}" alt="" class="img-fluid"> 98%</li>
-                                        <li><img src="{{asset('img/feddBack.png')}}" alt="" class="img-fluid"> {{$hospital->drating}} Feedback</li>
+                                        <li><img src="{{asset('img/feddBack.png')}}" alt="" class="img-fluid"> {{$hospital->count_rating}} Feedback</li>
                                         <li><img src="{{asset('img/location-pin.png')}}" alt="" class="img-fluid">{{$hospital->city}}</li>
                                     </ul>
-                                    <a href="{{route('doctors.feedback',Crypt::encrypt($hospital->id))}}"><button class="commonButton">Give Feedback</button></a>
+                                    <a href="#"><button class="commonButton">Give Feedback</button></a>
                                 </div>
                             </div>
                         </div>

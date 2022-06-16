@@ -1,6 +1,8 @@
 @extends('layouts.Front.master-front')
 @php use App\Utils\HelperFunctions; @endphp
 @section('content')
+<input type="text" class="d-none" id="latitude" value="{{$doctors_feedback->lat}}">
+<input type="text"  class="d-none" id="longitude" value="{{$doctors_feedback->long}}">
 <main>
     <div class="commonBanner">
         <div class="backDrop"></div>
@@ -22,6 +24,8 @@
                                             <img src="{{asset($doctors_feedback->image)}}" alt="" class="img-fluid doctor-img" style="width: 18% !important">
                                             <div class="infoDiv">
                                                 <h4>{{$doctors_feedback->full_name}}</h4>
+                                                
+                                                
                                                 <p></p>
                                                 <p class="specility">
                                                     <img src="{{asset($doctors_feedback->sepcial->image)}}" alt=""
@@ -59,8 +63,12 @@
                                                    {{count($doctors_feedback->drating)}} Feedback</li>
                                                 <li><img src="{{asset('img/location-pin.png')}}" alt=""
                                                         class="img-fluid"> {{$doctors_feedback->country->country_name}}, {{$doctors_feedback->city}}</li>
+                                                <li>
+                                                   <span>Distance:</span> <strong id="distance"></strong><span> KM</span>
+                                                </li>
+                                                <li><span>Duration:</span><strong id="duration"></strong><span> Minutes</span></li>
                                             </ul>
-                                            <button class="commonButton">Give Feedback</button>
+                                            <div id="route_map" style="height: 16rem;border: 2px solid #bf9c60; border-radius: 14px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -258,6 +266,7 @@
                                         <hr>
                                         <div class="top-review">
                                             <h3>Some Top Reviews About Dr.{{$doctors_feedback->full_name}}</h3>
+                                            
                                             <div class="top-reveiw-slider">
                                                 @foreach($doctors_feedback->drating as $drat)
                                                 <div class="reviewBox">
@@ -538,6 +547,7 @@
 
 @endsection
 @section('script')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeHpSgm-hy0_G_NC6PynKEYgASntQIi1Y&libraries=places&callback=initMap" async defer></script>
 <script type="text/javascript">
   $("label").click(function(){
   // $(this).parent().find("label").css({"background-color": "#D8D8D8"});
@@ -548,5 +558,111 @@
   $(this).css({"color": "#7ED321"});
   $(this).nextAll().css({"color": "#7ED321"});
 });
+</script>
+<script>
+
+    
+
+ // Find the Shortest Path From Google map API
+ function findShortestRoute() {
+    console.log(localStorage.getItem("longitude"));
+    var d_lat = $('#latitude').val();
+    var d_long = $('#longitude').val();
+    let origin = new google.maps.LatLng(localStorage.getItem("latitude"), localStorage.getItem("longitude"));
+    let destination = new google.maps.LatLng(d_lat, d_long);
+    let directionsService = new google.maps.DirectionsService();
+    var request = {
+        // origin: 'Berliner Dom, Am Lustgarten, Berlin, Germany',
+        // destination: 'Barclaycard Arena, Sylvesterallee, Hamburg, Germany',
+        origin: origin,
+        destination: destination,
+        travelMode: 'DRIVING',
+        provideRouteAlternatives : true,
+        avoidHighways: false,
+        avoidTolls: false,
+    };
+    directionsService.route(request, function(response, status) {
+        if (status === 'OK') {
+            let route_options = [];
+            for (var i = 0; i < response.routes.length; i++)
+            {
+                let route = response.routes[i];
+                let distance = 0;
+                // Total the legs to find the overall journey distance for each route option
+                for (var j = 0; j < route.legs.length; j++)
+                {
+                    distance += route.legs[j].distance.value; // metres
+                }
+                route_options.push({
+                    'route_id': i,
+                    'distance': distance
+                });
+            }
+            route_options.sort(function(a, b) {
+                return parseInt(a.distance) - parseInt(b.distance);
+            });
+            let duration = response.routes[0].legs[0].duration.value;
+            let shortest_distance = (route_options[0]['distance'] * 0.001); // convert metres to kilometres
+            console.log('shortest_distance');
+            console.log(route_options[0]['distance']);
+            // $('.lat_pck').val(latitude_pick);
+            // $('.long_pck').val(longitude_pick);
+            // $('.lat_drop').val(latitude_drop);
+            // $('.long_drop').val(longitude_drop);
+            $('#distance').text(parseInt(route_options[0]['distance']/1000));
+            $('#duration').text(parseInt(duration/60));
+        }
+    });
+}
+
+
+
+
+var d_lat = $('#latitude').val();
+var d_long = $('#longitude').val();
+let pick_latitude = localStorage.getItem("latitude");
+let pick_longitude = localStorage.getItem("longitude");
+let drop_latitude =d_lat;
+let drop_longitude = d_long;
+
+function initMap() {
+    let pickLatLong = {lat: pick_latitude, lng: pick_longitude};
+    let dropLatLong = {lat: drop_latitude, lng: drop_longitude};
+    let directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+        var map = new google.maps.Map(
+            document.getElementById('route_map'),
+            {zoom: 12, center: pickLatLong});
+        var pickMarker = new google.maps.Marker({position: pickLatLong, map: map});
+        var DropMarker = new google.maps.Marker({position: dropLatLong, map: map});
+
+        let originLatLong = new google.maps.LatLng(pick_latitude, pick_longitude);
+        let destinationLatLong = new google.maps.LatLng(drop_latitude, drop_longitude);
+        findShortestRoute();
+      calculateAndDisplayRoute(directionsService , directionsRenderer , originLatLong , destinationLatLong)
+     directionsRenderer.setMap(map);
+}
+
+
+function calculateAndDisplayRoute(directionsService, directionsRenderer , pickLatLong ,dropLatLong ) {
+
+    directionsService.route(
+        {
+            // origin: 'Berlin–Tegel internasjonale lufthavn (TXL), Saatwinkler Damm, Berlin, Germany',
+            origin: pickLatLong,
+            destination: dropLatLong,
+            // destination: 'Berliner Dom, Am Lustgarten, Berlin, Germany',
+            travelMode: 'DRIVING'
+        },
+        function(response, status) {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(response);
+                console.log(response)
+            } else {
+                console.log('Directions request failed due to ' + status);
+            }
+        });
+}
+
 </script>
 @endsection

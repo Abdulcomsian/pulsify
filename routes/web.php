@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\DoctorsController;
 use App\Http\Controllers\Front\ContactUsController;
 use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\GoogleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,10 @@ Route::get('/doctor-feedback/{id}', [DoctorsController::class, 'doctor_feedback'
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
 Route::get('contact-save', [ContactUsController::class, 'store'])->name('contact-us.store');
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
+//google login
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('callback', [GoogleController::class, 'handleGoogleCallback']);
 
 //AUTH MIDDLEWARE
 Route::group(['middleware' => ['auth']], function () {
