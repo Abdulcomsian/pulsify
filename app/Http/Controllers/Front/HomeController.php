@@ -23,6 +23,12 @@ class HomeController extends Controller
         $hospitals =Hospital::get();
         $blogs     =Blog::limit(5)->latest()->get();
         $cities = json_decode(file_get_contents(storage_path() . "/city.json"), true);
-        return view('frontend.home',compact('doctors','speciality','countries','hospitals','blogs','cities','reviews'));
+        $tophospital = Hospital::with('country','h_rating')
+            ->select(['hospitals.*',DB::raw('avg(hospital_ratings.overall_rating) as avgrate'),DB::raw('count(hospital_ratings.id) as count_rating')])
+            ->join('hospital_ratings', 'hospital_ratings.hospital_id', '=', 'hospitals.id')
+            ->groupBy('hospital_ratings.hospital_id')
+            ->first();
+        // dd($tophospital);
+        return view('frontend.home',compact('tophospital','doctors','speciality','countries','hospitals','blogs','cities','reviews'));
     }
 }

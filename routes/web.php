@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\DoctorsController;
 use App\Http\Controllers\Front\ContactUsController;
 use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\GoogleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,12 +32,17 @@ Route::get('/hospital-feedback', function () {
 //search doctors
 Route::get('/search', [DoctorsController::class, 'search'])->name('search.doctors');
 Route::get('Top-Rated-Doctos',[DoctorsController::class, 'top_doctors'])->name('top.doctors');
+Route::get('Top-Rated-Hospitals',[DoctorsController::class, 'top_hospitals'])->name('top.hospitals');
 Route::get('/doctor-feedback/{id}', [DoctorsController::class, 'doctor_feedback'])->name('doctors.feedback');
 
 //contact us rutes
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
 Route::get('contact-save', [ContactUsController::class, 'store'])->name('contact-us.store');
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
+//google login
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('callback', [GoogleController::class, 'handleGoogleCallback']);
 
 //AUTH MIDDLEWARE
 Route::group(['middleware' => ['auth']], function () {
@@ -50,6 +56,10 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth', 'admin'],'prefix' => 'admin'], function () {
   Route::get('dashboard', [DoctorController::class, 'dashboard'])->name('admin.dashboard');
   Route::post('store_education', [DoctorController::class, 'store_education'])->name('doctor_detail.store-education');
+  Route::post('store_experience', [DoctorController::class, 'store_experience'])->name('doctor_detail.store-experience');
+  Route::get('delete_education/{id}', [DoctorController::class, 'delete_education'])->name('doctor_detail.delete-education');
+  Route::get('delete_experience/{id}', [DoctorController::class, 'delete_experience'])->name('doctor_detail.delete-experience');
+  Route::post('store_service', [DoctorController::class, 'store_service'])->name('doctor_detail.store-service');
 
   Route::resources([
     'doctors' => DoctorController::class,

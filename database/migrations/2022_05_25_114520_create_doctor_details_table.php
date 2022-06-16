@@ -32,6 +32,7 @@ class CreateDoctorDetailsTable extends Migration
             $table->string('gender')->nullable();
             $table->string('lat')->nullable();
             $table->string('long')->nullable();
+            $table->longtext('services')->nullable();
             $table->timestamps();
         });
     }

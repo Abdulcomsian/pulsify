@@ -164,7 +164,7 @@
                                         <p>{{$doc->country->country_name}}, {{$doc->city}}</p>
                                         <p class="rating" style="float:none"><i class="fa fa-star"></i>{{(int)HelperFunctions::avg($doc->id)}} <span>{{count($doc->drating)}} reviews</span></p>
                                     </div>
-                                    <div class="doctorDetail">
+                                    <div class="doctorDetail" style="height: 133px;">
                                         <p>{{ \Illuminate\Support\Str::limit($doc->description, 120, '...') }}</p>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                                         <p>New York, NY</p>
                                         <p class="rating" style="float:none"><i class="fa fa-star"></i>4.54<span>37 reviews</span></p>
                                     </div>
-                                    <div class="doctorDetail">
+                                    <div class="doctorDetail" style="height: 133px;">
                                         <p>Very personable and good listener. Makes you feel comfortable and open immediately. Felt well taken care...</p>
                                     </div>
                                 </div>
@@ -297,17 +297,42 @@
                 <div class="row">
                     <div class="col-lg-6 text-center">
                         <div class="imgDiv">
-                            <img src="{{asset('img/medicalExpert.png')}}" alt="" class="img-fluid">
+                            <img src="{{asset($tophospital->image)}}" style="width: 647px; height:470px" alt="" class="img-fluid">
                             <div class="qualityOurQuantity">
                                 <img src="{{asset('img/quality.png')}}" alt="" class="img-fluid">
                                 <div class="textDiv">
                                     <p>Quality over Quantity</p>
+                                    {{-- <span>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </span> --}}
                                     <span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                                    @php
+                                    for($i=0;$i <$tophospital->avgrate;$i++)
+                                    {
+                                    @endphp
+                                    <i class="fa fa-star"></i>
+                                    @php }
+                                    @endphp
+                                    @if($tophospital->avgrate=='4')
+                                    <i class="fa fa-star-o"></i>
+                                    @elseif($tophospital->avgrate=='3')
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    @elseif($tophospital->avgrate=='2')
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    @elseif($tophospital->avgrate=='1')
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    @else
+                                    @endif
                                     </span>
                                 </div>
                             </div>
@@ -315,9 +340,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="medicalRightDiv">
-                            <h3>The best service from severe medical experts</h3>
-                            <p>The hospital is an integral part of a social and health organization with the function of providing comprehensive (comprehensive) services.</p>
-                            <a href="">Top Hospitals</a>
+                            <h3>{{$tophospital->name}}</h3>
+                            <p>{{$tophospital->description}}</p>
+                            <a href="{{url('Top-Rated-Hospitals')}}">Top Hospitals</a>
                         </div>
                     </div>
                 </div>
@@ -467,9 +492,29 @@
     @section('script')
     <script type="text/javascript">
     // In your Javascript (external .js resource or <script> tag)
-$(document).ready(function() {
-    $('.js-example-basic-single').select2();
-});
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+        getLocation();
+        
+
+    });
+
+
+	function getLocation() {
+	  	if (navigator.geolocation) {
+	    	navigator.geolocation.getCurrentPosition(showPosition);
+	  	} else { 
+	    	x.innerHTML = "Geolocation is not supported by this browser.";
+	  	}
+	}
+
+	function showPosition(position) {
+	
+          localStorage.setItem("latitude", position.coords.latitude);
+        localStorage.setItem("longitude", position.coords.longitude);
+        
+        
+	}
 </script>
     @endsection
 

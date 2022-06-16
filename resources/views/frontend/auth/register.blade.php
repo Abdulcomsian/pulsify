@@ -37,12 +37,12 @@
                     <div class="socialDiv">
                         <p class="text-center">Or sign up using</p>
                         <div class="multiBtn text-center">
-                            <a href="">
+                            <a href="{{ url('auth/google') }}">
                                 <img src="{{asset('img/googleLogo.png')}}" alt="" class="img-fluid">
                             </a>
-                            <a href="">
+                            {{-- <a href="">
                                 <img src="{{asset('img/appleLogo.png')}}" alt="" class="img-fluid">
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </form>
