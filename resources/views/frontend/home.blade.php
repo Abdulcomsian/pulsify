@@ -1,9 +1,9 @@
 
- 
     @extends('layouts.Front.master-front')
     @php use App\Utils\HelperFunctions; @endphp
     @section('content')
     <main class="pageWrapper">
+        
         <div class="mainHeroSection">
             <div class="container-fluid">
                 <div class="row">
@@ -369,7 +369,11 @@
                             </div>
                             <p>{{$drat->review}}.</p>
                             <div class="profileDiv">
+                                @if($drat->user->image != null)
                                 <img src="{{asset($drat->user->image)}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
+                                @else
+                                <img src="{{'img/male_icon.jpg'}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
+                                @endif
                                 <div class="profileDetail">
                                     <h4>{{$drat->user->name}}</h4>
                                     <span>Patient</span>
@@ -519,6 +523,8 @@
         
         
 	}
+
+    
 </script>
     @endsection
 

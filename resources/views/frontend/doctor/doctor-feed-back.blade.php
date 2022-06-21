@@ -272,7 +272,11 @@
                                                 <div class="reviewBox">
                                                     <p>{{$drat->review}}</p>
                                                     <div class="infoDiv">
+                                                        @if($drat->user->image != null)
+                                                        <img src="{{asset($drat->user->image)}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
+                                                        @else
                                                         <img src="{{asset('img/male_icon.jpg')}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
+                                                        @endif
                                                         <div class="contentDiv">
                                                             <h4>{{$drat->user->name}}</h4>
                                                             <p>Patient</p>
@@ -338,7 +342,11 @@
                                             <div class="multi-review">
                                                  @foreach($doctors_feedback->drating as $drat)
                                                 <div class="patientBox">
+                                                    @if($drat->user->image != null)
                                                     <img src="{{asset($drat->user->image)}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
+                                                    @else
+                                                    <img src="{{asset('img/male_icon.jpg')}}" alt="" class="img-fluid" style="width: 50px;height: 50px;border-radius: 100%;">
+                                                    @endif
                                                     <div class="contentDiv w-100">
                                                         <h3>{{$drat->user->name}}</h3>
                                                         <span>Reviewed {{$drat->created_at->diffForHumans()}}</span>
